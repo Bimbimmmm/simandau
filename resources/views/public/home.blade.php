@@ -21,11 +21,11 @@ header {
 </header>
 <!-- Service Product HERO -->
 <header>
-  <div class="min-h-screen bg-white py-14">
-    <h1 class="mb-12 text-center text-4xl text-black font-bold">Produk Layanan</h1>
+  <div class="min-h-screen bg-black py-14">
+    <h1 class="mb-12 text-center text-4xl text-white font-bold">Produk Layanan</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
       <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 p-4">
-        <a>
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <img class="rounded-t-lg" src="{{ asset('images/simacan.jpg') }}" alt="SIMACAN">
         </a>
         <div class="p-5 text-center">
@@ -35,7 +35,7 @@ header {
           <p class="font-normal text-gray-700 mb-3 capitalize text-center">
             sistem informasi manajemen cabang dinas pendidikan adalah suatu layanan yang digunakan untuk memudahkan pelayanan administrasi maupun non-administrasi bagi ASN yang berada di bawah lingkup Kantor Cabang Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara Wilayah Nunukan
           </p>
-          <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="https://app.simacankaltara.com/" target="_blank">
+          <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="https://app.simacankaltara.com/" target="_blank">
             Kunjungi
           </a>
         </div>
@@ -53,7 +53,7 @@ header {
             dalam menunjang proses belajar mengajar di sekolah. serta menjadi alat monitoring dan evaluasi terhadap
             peserta didik oleh orang tua dan performa tenaga pendidik oleh atasan
           </p>
-          <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+          <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
             Kunjungi
           </a>
         </div>
@@ -71,7 +71,7 @@ header {
              memiliki p-ISSN: 2723-1577 dan e-ISSN: 2723-5874. Menerbitkan artikel terkhusus bidang
              Pendidikan secara online. jurnal ini terbuka bagi masyarakat umum/praktisi maupun ASN di seluruh indonesia
           </p>
-          <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="http://cabdindikbudnunukan.id/journal/index.php/neo-jer" target="_blank">
+          <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="http://cabdindikbudnunukan.id/journal/index.php/neo-jer" target="_blank">
             Kunjungi
           </a>
         </div>
@@ -81,9 +81,17 @@ header {
 </header>
 <!-- Recently News HERO -->
 <header>
-  <div class="min-h-screen bg-blue-200 py-14">
-    <h1 class="mb-12 text-center text-4xl text-white font-bold">Berita Terbaru</h1>
+  <div class="min-h-screen bg-white py-14">
+    <h1 class="mb-12 text-center text-4xl text-black font-bold">Berita Terbaru</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="bg-white p-6 rounded-lg">
+          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
+          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
+          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+        </div>
+      </div>
       <div class="xl:w-1/3 md:w-1/2 p-4">
         <div class="bg-white p-6 rounded-lg">
           <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
