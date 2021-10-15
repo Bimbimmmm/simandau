@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicNewsController;
+use App\Http\Controllers\PublicOkelahController;
+use App\Http\Controllers\PublicComplaintController;
+use App\Http\Controllers\PublicAboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +30,14 @@ require __DIR__.'/auth.php';
 Route::resource('publicnews', 'PublicNewsController');
 Route::get('public/news', [PublicNewsController::class, 'index'])->name('publicnewsindex');
 
+Route::resource('publicokelah', 'PublicOkelahController');
+Route::get('public/okelah', [PublicOkelahController::class, 'index'])->name('publicokelahindex');
+
+Route::resource('publicaboutus', 'PublicAboutUsController');
+Route::get('public/aboutus', [PublicAboutUsController::class, 'index'])->name('publicaboutusindex');
+
+Route::resource('publiccomplaint', 'PublicComplaintController');
+Route::get('public/complaint', [PublicComplaintController::class, 'index'])->name('publiccomplaintindex');
 /*
 Route::resource('seller', 'SellerProductController');
 Route::get('seller/product/{idEn}', [SellerProductController::class, 'index'])->middleware('can:isSeller')->name('sellerproduct');
