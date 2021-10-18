@@ -5,6 +5,7 @@ use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicOkelahController;
 use App\Http\Controllers\PublicComplaintController;
 use App\Http\Controllers\PublicAboutUsController;
+use App\Http\Controllers\PublicStatisticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::get('public/aboutus', [PublicAboutUsController::class, 'index'])->name('p
 
 Route::resource('publiccomplaint', 'PublicComplaintController');
 Route::get('public/complaint', [PublicComplaintController::class, 'index'])->name('publiccomplaintindex');
+
+Route::resource('publicstatistic', 'PublicStatisticController');
+Route::get('public/statistic', [PublicStatisticController::class, 'index'])->name('publicstatisticindex');
 /*
 Route::resource('seller', 'SellerProductController');
 Route::get('seller/product/{idEn}', [SellerProductController::class, 'index'])->middleware('can:isSeller')->name('sellerproduct');

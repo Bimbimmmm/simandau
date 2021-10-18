@@ -104,7 +104,7 @@
       <div class="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2" style="background-image: url('https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
         <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
           <div class="px-10 max-w-xl">
-            <h2 class="text-2xl text-white font-semibold">Produk Kerajinan Sekolah Menengah Atas</h2>
+            <h2 class="text-2xl text-white font-semibold">Produk Kerajinan Sekolah Menengah Kejuruan</h2>
             <p class="mt-2 text-gray-400 capitalize">
               bagian ini berisi produk-produk kreatif hasil program kewirausahaan siswa-siswi di sekolah menengah kejuruan
             </p>

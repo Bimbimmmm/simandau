@@ -33,6 +33,7 @@
             <li><a class="hover:text-gray-200" href="/">Home</a></li>
             <li><a class="hover:text-gray-200" href="/public/news">Berita</a></li>
             <li><a class="hover:text-gray-200" href="/public/okelah">OKELAH</a></li>
+            <li><a class="hover:text-gray-200" href="/public/statistic">Statistik</a></li>
             <li><a class="hover:text-gray-200" href="/public/aboutus">Tentang Kami</a></li>
             <li><a class="hover:text-gray-200" href="/public/complaint">Layanan Pengaduan</a></li>
           </ul>
