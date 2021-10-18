@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 @section('content')
-<div x-data="{ cartOpen: false , isOpen: false }">
+<div class="bg-gray-100" x-data="{ cartOpen: false , isOpen: false }">
 <header>
   <div class="container mx-auto px-6 py-3">
     <div class="flex items-center justify-between">

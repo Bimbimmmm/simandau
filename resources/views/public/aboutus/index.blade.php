@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 @section('content')
-<div class="min-h-screen bg-gray-500 py-14">
+<div class="min-h-screen bg-yellow-900 py-14">
   <h1 class="mb-12 text-center text-4xl text-white font-bold">Kata Pengantar Kepala Cabang</h1>
   <div class="md:flex md:justify-center md:space-x-8 md:px-14">
     <div class="w-full md:w-1/4 ml-auto mr-auto px-4">
@@ -8,8 +8,8 @@
     </div>
     <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
       <div class="md:pr-12">
-        <h3 class="text-3xl font-semibold">A growing company</h3>
-        <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+        <h3 class="text-3xl font-semibold text-white">A growing company</h3>
+        <p class="mt-4 text-lg leading-relaxed text-white">
           The extension comes with three pre-built pages to help you get
           started faster. You can change the text and images and you're
           good to go.
@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  <div class="min-h-screen bg-yellow-200 py-14">
+  <div class="min-h-screen bg-gray-100 py-14">
     <h1 class="mb-12 text-center text-4xl text-black font-bold">Profil Pegawai Cabang Dinas</h1>
 
     <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">

@@ -7,7 +7,7 @@
 </div>
 <!-- Service Product HERO -->
 <header>
-  <div class="min-h-screen bg-black py-14">
+  <div class="min-h-screen bg-yellow-900 py-14">
     <h1 class="mb-12 text-center text-4xl text-white font-bold">Produk Layanan</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
       <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 p-4">
@@ -21,7 +21,7 @@
           <p class="font-normal text-gray-700 mb-3 capitalize text-center">
             sistem informasi manajemen cabang dinas pendidikan adalah suatu layanan yang digunakan untuk memudahkan pelayanan administrasi maupun non-administrasi bagi ASN yang berada di bawah lingkup Kantor Cabang Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara Wilayah Nunukan
           </p>
-          <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="https://app.simacankaltara.com/" target="_blank">
+          <a class="text-white bg-blue-700 hover:bg-yellow-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="https://app.simacankaltara.com/" target="_blank">
             Kunjungi
           </a>
         </div>
@@ -39,7 +39,7 @@
             dalam menunjang proses belajar mengajar di sekolah. serta menjadi alat monitoring dan evaluasi terhadap
             peserta didik oleh orang tua dan performa tenaga pendidik oleh atasan
           </p>
-          <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+          <a class="text-white bg-blue-700 hover:bg-yellow-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
             Kunjungi
           </a>
         </div>
@@ -57,7 +57,7 @@
             memiliki p-ISSN: 2723-1577 dan e-ISSN: 2723-5874. Menerbitkan artikel terkhusus bidang
             Pendidikan secara online. jurnal ini terbuka bagi masyarakat umum/praktisi maupun ASN di seluruh indonesia
           </p>
-          <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="http://cabdindikbudnunukan.id/journal/index.php/neo-jer" target="_blank">
+          <a class="text-white bg-blue-700 hover:bg-yellow-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="http://cabdindikbudnunukan.id/journal/index.php/neo-jer" target="_blank">
             Kunjungi
           </a>
         </div>
