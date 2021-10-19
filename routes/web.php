@@ -33,6 +33,7 @@ Route::get('public/news', [PublicNewsController::class, 'index'])->name('publicn
 
 Route::resource('publicokelah', 'PublicOkelahController');
 Route::get('public/okelah', [PublicOkelahController::class, 'index'])->name('publicokelahindex');
+Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout']);
 
 Route::resource('publicaboutus', 'PublicAboutUsController');
 Route::get('public/aboutus', [PublicAboutUsController::class, 'index'])->name('publicaboutusindex');

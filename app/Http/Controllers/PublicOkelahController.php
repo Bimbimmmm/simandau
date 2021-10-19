@@ -16,6 +16,11 @@ class PublicOkelahController extends Controller
         return view('public/okelah/index');
     }
 
+    public function checkout()
+    {
+        return view('public/okelah/checkout');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -7,9 +7,6 @@
 
   <title>SIMANDAU</title>
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
@@ -19,10 +16,10 @@
   <script src="{{ asset('js/alpine.min.js') }}" defer></script>
 </head>
 <body class="font-roboto">
-  <div class="flex flex-wrap h-screen">
+  <div class="flex flex-wrap h-screen" x-data="{open: false , isOpen: false }">
     <section class="relative mx-auto">
       <!-- navbar -->
-      <nav class="flex justify-between bg-white text-yellow-900 w-screen">
+      <nav class="flex sticky top-0 z-50 justify-between bg-white text-yellow-900 w-screen">
         <div class="px-5 xl:px-12 py-6 flex w-full items-center">
           <a class="text-3xl font-bold font-heading" href="#">
             <!-- <img class="h-9" src="logo.png" alt="logo"> -->
@@ -40,29 +37,62 @@
           <!-- Header Icons -->
           <div class="hidden xl:flex items-center space-x-5 items-center">
             <!-- Sign In / Register      -->
-            <a class="flex items-center hover:text-yellow-600" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <button @click="open = !open" class="flex items-center hover:text-yellow-600" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-            </a>
-
+            </button>
           </div>
         </div>
+        <div x-show="open" class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20 mt-20 mr-8" style="width:20rem;">
+            <div class="py-2">
+                <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
+                    <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar">
+                    <p class="text-gray-600 text-sm mx-2">
+                        <span class="font-bold" href="#">Sara Salah</span> replied on the <span class="font-bold text-blue-500" href="#">Upload Image</span> artical . 2m
+                    </p>
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
+                    <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="avatar">
+                    <p class="text-gray-600 text-sm mx-2">
+                        <span class="font-bold" href="#">Slick Net</span> start following you . 45m
+                    </p>
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
+                    <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar">
+                    <p class="text-gray-600 text-sm mx-2">
+                        <span class="font-bold" href="#">Jane Doe</span> Like Your reply on <span class="font-bold text-blue-500" href="#">Test with TDD</span> artical . 1h
+                    </p>
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 hover:bg-gray-100 -mx-2">
+                    <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=398&q=80" alt="avatar">
+                    <p class="text-gray-600 text-sm mx-2">
+                        <span class="font-bold" href="#">Abigail Bennett</span> start following you . 3h
+                    </p>
+                </a>
+            </div>
+            <a href="#" class="block bg-gray-800 text-white text-center font-bold py-2">See all notifications</a>
+        </div>
         <!-- Responsive navbar -->
-        <a class="xl:hidden flex mr-6 items-center" href="#">
-          <button @click="cartOpen = !cartOpen" class="text-white focus:outline-none mx-4 sm:mx-0">
-            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        <div class="navbar-burger self-center mr-6 xl:hidden">
+          <button @click="isOpen = !isOpen" type="button" class="text-yellow-900 hover:text-yellow-600 focus:outline-none focus:text-yellow-900" aria-label="toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-yellow-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-        </a>
-        <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </a>
+        </div>
       </nav>
-      <div class="font-roboto text-gray-700 antialiased">
+      <nav :class="isOpen ? '' : 'hidden'" class="xl:hidden sm:flex sm:justify-center sm:items-center mb-4 ml-4">
+        <div class="flex flex-col sm:flex-row">
+          <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Home</a>
+          <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Berita</a>
+          <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">OKELAH</a>
+          <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Statistik</a>
+          <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Tentang Kami</a>
+          <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Layanan Pengaduan</a>
+        </div>
+      </nav>
+      <div class="font-roboto relative text-gray-700 antialiased">
         @yield('content')
         <div class="fixed bottom-0 right-0 flex flex-col items-end ml-6 w-full">
           <!-- Chat -->
