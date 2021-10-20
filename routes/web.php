@@ -6,6 +6,10 @@ use App\Http\Controllers\PublicOkelahController;
 use App\Http\Controllers\PublicComplaintController;
 use App\Http\Controllers\PublicAboutUsController;
 use App\Http\Controllers\PublicStatisticController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +26,16 @@ Route::get('/', function () {
     return view('public/home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+Route::resource('administrator', 'AdministratorController');
+Route::get('/administrator', [AdministratorController::class, 'index'])->middleware('can:isAdmin')->name('administrator');
+
+Route::resource('operator', 'OperatorController');
+Route::get('/operator', [OperatorController::class, 'index'])->middleware('can:isOperator')->name('operator');
+
+Route::resource('public', 'PublicController');
+Route::get('/public', [PublicController::class, 'index'])->name('home');
 
 require __DIR__.'/auth.php';
 
