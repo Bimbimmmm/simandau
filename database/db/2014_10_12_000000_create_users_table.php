@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
           $table->string('mac_address');
           $table->string('ip_address');
           $table->string('avatar_file')->nullable();
+          $table->boolean('is_deleted');
           $table->rememberToken();
           $table->timestamps();
       });

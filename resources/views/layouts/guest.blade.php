@@ -13,7 +13,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="{{ asset('js/alpine.min.js') }}" defer></script>
+  <script src="{{ asset('js/alpine.min.js') }}"></script>
 </head>
 <body class="font-roboto">
   <div class="flex flex-wrap h-screen" x-data="{open: false , isOpen: false }">

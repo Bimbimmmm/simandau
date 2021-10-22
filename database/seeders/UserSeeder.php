@@ -27,7 +27,8 @@ class UserSeeder extends Seeder
               'is_guest' => FALSE,
               'mac_address' => 'XXXXXXXX',
               'ip_address' => 'XXXXXXXX',
-              'avatar_file' => 'admin.jpg'
+              'avatar_file' => 'admin.jpg',
+              'is_deleted' => FALSE
           ],
           [
               'first_name' => 'Dewi',
@@ -40,7 +41,8 @@ class UserSeeder extends Seeder
               'is_guest' => TRUE,
               'mac_address' => 'XXXXXXXX',
               'ip_address' => 'XXXXXXXX',
-              'avatar_file' => 'dwayina.jpg'
+              'avatar_file' => 'dwayina.jpg',
+              'is_deleted' => FALSE
           ]
       ]);
     }
