@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
 
 class PublicController extends Controller
 {
@@ -13,7 +14,8 @@ class PublicController extends Controller
      */
     public function index()
     {
-        return view('public/home');
+        $newss=News::where('is_deleted', FALSE)->latest()->take(4)->get();
+        return view('public/home', compact('newss'));
     }
 
     /**

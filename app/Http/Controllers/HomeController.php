@@ -30,7 +30,7 @@ class HomeController extends Controller
          return redirect()->route('home', $idEn);
     }
     if($request->user()->id == null){
-      return view('public/home');
+      return redirect()->route('home');
     }
   }
 }

@@ -34,8 +34,11 @@
         </thead>
         <tbody class="bg-white">
           @foreach($datas as $data)
+          @php
+          $title = substr($data->title, 0, 85);
+          @endphp
           <tr class="text-gray-700 text-center">
-            <td class="px-4 py-3 text-ms border font-semibold">{{$data->title}}</td>
+            <td class="px-4 py-3 text-ms border font-semibold">{{$title}}...</td>
             <td class="px-4 py-3 text-ms border">{{$data->author}}</td>
             <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
             <td class="px-4 py-3 text-xs border">

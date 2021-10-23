@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use App\Models\News;
 
 class PublicNewsController extends Controller
 {
@@ -13,7 +15,8 @@ class PublicNewsController extends Controller
      */
     public function index()
     {
-        return view('public/news/index');
+        $newss=News::where('is_deleted', FALSE)->latest()->get();
+        return view('public/news/index', compact('newss'));
     }
 
     /**
@@ -43,9 +46,11 @@ class PublicNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idEn)
     {
-        //
+        $id=Crypt::decrypt($idEn);
+        $data=News::where('id', $id)->first();
+        return view('public/news/view', compact('data'));
     }
 
     /**

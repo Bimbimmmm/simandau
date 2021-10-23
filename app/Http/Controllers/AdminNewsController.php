@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use Validator;
+use Session;
 
 class AdminNewsController extends Controller
 {
@@ -36,7 +38,58 @@ class AdminNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'title'                 => 'required|min:3|max:100|unique:news,title',
+            'content'               => 'required|min:35',
+            'header_image'          => 'required',
+            'header_image.*'        => 'image|mimes:jpeg,png,jpg|max:2048',
+            'content_image.*'       => 'image|mimes:jpeg,png,jpg|max:2048',
+            'author'                => 'required'
+        ];
+
+        $messages = [
+            'title.required'        => 'Judul Berita wajib diisi',
+            'title.min'             => 'Judul Berita minimal 3 karakter',
+            'title.max'             => 'Judul Berita maksimal 100 karakter',
+            'title.unique'          => 'Judul Berita sudah pernah dibuat',
+            'content.required'      => 'Isi Berita wajib diisi',
+            'content.min'           => 'Isi Berita minimal 35 karakter',
+            'header_image.required' => 'Foto Header wajib diisi',
+            'author.required'       => 'Nama penulis wajib diisi'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $header_image = $request->header_image->getClientOriginalName();
+        $request->header_image->move(public_path('storage/news'), $header_image);
+
+        if($request->content_image != null){
+          $content_image = $request->content_image->getClientOriginalName();
+          $request->content_image->move(public_path('storage/news'), $content_image);
+        }else{
+          $content_image = null;
+        }
+
+        $news = new News;
+        $news->title = $request->title;
+        $news->content = $request->content;
+        $news->header_image = $header_image;
+        $news->content_image = $content_image;
+        $news->author = $request->author;
+        $news->is_deleted = FALSE;
+        $save = $news->save();
+
+        if($news){
+            Session::flash('success', 'Berita Berhasil Ditambahkan');
+            return redirect()->route('adminnewsindex');
+        } else {
+            Session::flash('errors', ['' => 'Gagal Menambahkan Berita! Silahkan ulangi beberapa saat lagi']);
+            return redirect()->route('adminnewscreate');
+        }
     }
 
     /**

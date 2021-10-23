@@ -70,38 +70,20 @@
   <div class="min-h-screen bg-white py-14">
     <h1 class="mb-12 text-center text-4xl text-black font-bold">Berita Terbaru</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
+      @foreach($newss as $news)
+      @php
+      $caption = substr($news->content, 0, 250);
+      $idEn=Crypt::encrypt($news->id);
+      @endphp
       <div class="xl:w-1/3 md:w-1/2 p-4">
         <div class="bg-white p-6 rounded-lg">
-          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="{{ asset('storage/news/' . $news->header_image) }}">
+          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{$news->author}}</h3>
+          <a href="{{ url ('/public/news/view', array("$idEn")) }}"><h2 class="text-lg text-gray-900 font-medium title-font mb-4 hover:underline">{{$news->title}}</h2></a>
+          <p class="leading-relaxed text-base">{!! $caption !!}....</p>
         </div>
       </div>
-      <div class="xl:w-1/3 md:w-1/2 p-4">
-        <div class="bg-white p-6 rounded-lg">
-          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
-      <div class="xl:w-1/3 md:w-1/2 p-4">
-        <div class="bg-white p-6 rounded-lg">
-          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
-      <div class="xl:w-1/3 md:w-1/2 p-4">
-        <div class="bg-white p-6 rounded-lg">
-          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </header>

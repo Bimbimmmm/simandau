@@ -40,8 +40,8 @@
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
       <div class=" px-10 py-6 mx-auto">
         <div class="max-w-6xl px-10 py-6 mx-auto bg-gray-50">
-          <a href="#_" class="block transition duration-200 ease-out transform hover:scale-110">
-            <img class="object-cover w-full shadow-sm h-full" src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1951&amp;q=80">
+          <a class="block transition duration-200 ease-out transform hover:scale-110">
+            <img class="object-cover w-full shadow-sm h-full" src="{{ asset('images/struktur.jpg') }}">
           </a>
         </div>
       </div>

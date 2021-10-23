@@ -29,9 +29,7 @@ use App\Http\Controllers\ReferenceSchoolController;
 |
 */
 
-Route::get('/', function () {
-    return view('public/home');
-});
+Route::get('/', [PublicController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
@@ -40,13 +38,14 @@ Route::get('/administrator', [AdministratorController::class, 'index'])->middlew
 Route::resource('operator', 'OperatorController');
 Route::get('/operator', [OperatorController::class, 'index'])->middleware('can:isOperator')->name('operator');
 
-Route::get('/public', [PublicController::class, 'index'])->name('home');
+
 
 require __DIR__.'/auth.php';
 
 //Public Routes
 Route::resource('publicnews', 'PublicNewsController');
 Route::get('public/news', [PublicNewsController::class, 'index'])->name('publicnewsindex');
+Route::get('public/news/view/{idEn}', [PublicNewsController::class, 'show'])->name('publicnewsshow');
 
 Route::resource('publicokelah', 'PublicOkelahController');
 Route::get('public/okelah', [PublicOkelahController::class, 'index'])->name('publicokelahindex');
@@ -70,6 +69,7 @@ Route::get('/administrator/message', [AdminMessageController::class, 'index'])->
 
 Route::get('/administrator/news', [AdminNewsController::class, 'index'])->middleware('can:isAdmin')->name('adminnewsindex');
 Route::get('/administrator/news/create', [AdminNewsController::class, 'create'])->middleware('can:isAdmin')->name('adminnewscreate');
+Route::post('/administrator/news/store', [AdminNewsController::class, 'store'])->middleware('can:isAdmin')->name('adminnewsstore');
 
 Route::get('/administrator/product', [AdminProductController::class, 'index'])->middleware('can:isAdmin')->name('adminproductindex');
 
