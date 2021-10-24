@@ -4,11 +4,11 @@
   <h1 class="mb-12 text-center text-4xl text-white font-bold">Kata Pengantar Kepala Cabang</h1>
   <div class="md:flex md:justify-center md:space-x-8 md:px-14">
     <div class="w-full md:w-1/4 ml-auto mr-auto px-4">
-      <img alt="..." class="max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80">
+      <img alt="..." class="max-w-full rounded-lg shadow-lg" src="{{ asset('images/kacab.png') }}">
     </div>
     <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
       <div class="md:pr-12">
-        <h3 class="text-3xl font-semibold text-white">A growing company</h3>
+        <h3 class="text-3xl font-semibold text-white">"A Quotes"</h3>
         <p class="mt-4 text-lg leading-relaxed text-white">
           The extension comes with three pre-built pages to help you get
           started faster. You can change the text and images and you're
@@ -51,19 +51,230 @@
     <h1 class="mb-12 text-center text-4xl text-black font-bold">Profil Pegawai Cabang Dinas</h1>
 
     <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
-      <div class="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-            <div class="lg:w-1/2">
-                <div class="h-64 bg-cover lg:rounded-lg lg:h-full" style="background-image:url('https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80')"></div>
-            </div>
-            <div class="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
-                <h2 class="text-3xl text-gray-800 font-bold">Nama</h2>
-                <p class="mt-4 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem modi reprehenderit vitae exercitationem aliquid dolores ullam temporibus enim expedita aperiam mollitia iure consectetur dicta tenetur, porro consequuntur saepe accusantium consequatur.</p>
-                <div class="mt-8">
-                    <a href="#" class="bg-gray-900 text-gray-100 px-5 py-3 font-semibold rounded">Start Now</a>
-                </div>
-            </div>
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/kacab.png') }}" alt="">
+          </div>
         </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Dr. Nurbaya, S.Si, MP." />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="19701010 200312 2 006" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Kepala Cabang / Eselon 3" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Pembina Tk.I / IV.B" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/kasubag.png') }}" alt="">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="La Mija, S.Pd." />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="19740421 200012 1 004" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Kepala Sub-Bagian Tata Usaha / Eselon 4" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Pembina / IV.A" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/staff-yusran.png') }}" alt="">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Yusran Amir, S.Kom." />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="19791205 200902 1 003" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Staf Tata Usaha / Non-Eselon" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Penata Muda Tk.I / III.B" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/default.png') }}" alt="">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Muhamad Mukhlas, SP." />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="19820728 201503 1 004" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Staf Tata Usaha / Non-Eselon" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Penata Muda / III.A" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/staff-ulfa.png') }}" alt="">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Maria Ulfa" />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="19820220 201410 2 001" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Staf Tata Usaha / Non-Eselon" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Pengatur Muda Tk.I / II.B" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/default.png') }}" alt="">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Dwi Angga Aditya, A.Ma." />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="-" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Staf PTT Tata Usaha / Non-Eselon" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="-" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex md:justify-center md:space-x-8 md:px-14 mb-10">
+      <div class="border-b-2 block md:flex">
+        <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+          <div class="w-full p-8 mx-2 flex justify-center">
+            <img id="showImage" class="max-w-xs w-64 items-center border" src="{{ asset('images/aboutus/default.png') }}" alt="">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+          <div class="rounded  shadow p-6">
+            <div class="pb-6">
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama</label>
+              <div class="flex">
+                <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Nurdin" />
+              </div>
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">NIP</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="-" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Jabatan / Eselon</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="Petugas Kebersihan / Non-Eselon" />
+            </div>
+            <div class="pb-4">
+              <label for="about" class="font-semibold text-gray-700 block pb-1">Pangkat / Golongan</label>
+              <input disabled class="border-1  rounded-r px-4 py-2 w-full" type="text" value="-" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
   </div>
   @endsection
