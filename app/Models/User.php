@@ -51,4 +51,14 @@ class User extends Authenticatable
         'created_at',
         'update_at',
     ];
+
+    public function products()
+    {
+      return $this->hasMany('App\Models\Product', 'id');
+    }
+
+    public function schoolOperators()
+    {
+      return $this->hasMany('App\Models\SchoolOperator', 'id');
+    }
 }

@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\ReferenceSchoolController;
+use App\Http\Controllers\OperatorProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,6 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::get('/administrator', [AdministratorController::class, 'index'])->middleware('can:isAdmin')->name('administrator');
 
-Route::resource('operator', 'OperatorController');
 Route::get('/operator', [OperatorController::class, 'index'])->middleware('can:isOperator')->name('operator');
 
 
@@ -80,6 +80,11 @@ Route::get('/administrator/transaction', [AdminTransactionController::class, 'in
 //Reference Routes
 Route::get('/administrator/reference/school', [ReferenceSchoolController::class, 'index'])->middleware('can:isAdmin')->name('adminrefschool');
 Route::get('/administrator/reference/school/create', [ReferenceSchoolController::class, 'create'])->middleware('can:isAdmin');
+
+//Operator Routes
+Route::get('/operator/product', [OperatorProductController::class, 'index'])->middleware('can:isOperator')->name('operatorproductindex');
+Route::get('/operator/product/create', [OperatorProductController::class, 'create'])->middleware('can:isOperator')->name('operatorproductadd');
+Route::post('/operator/product/store', [OperatorProductController::class, 'store'])->middleware('can:isOperator')->name('operatorproductstore');
 
 Route::post('dependent-dropdown', 'ReferenceSchoolController@storedistrict')
     ->name('dependent-dropdown.storedistrict');

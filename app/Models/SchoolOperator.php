@@ -19,4 +19,19 @@ class SchoolOperator extends Model
         'is_active',
         'is_deleted'
     ];
+
+    public function user()
+    {
+      return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function school()
+    {
+      return $this->belongsTo('App\Models\ReferenceSchool', 'school_id');
+    }
+
+    public function products()
+    {
+      return $this->hasMany('App\Models\Product', 'id');
+    }
 }

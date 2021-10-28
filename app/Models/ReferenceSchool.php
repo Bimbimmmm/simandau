@@ -18,6 +18,18 @@ class ReferenceSchool extends Model
         'address',
         'city',
         'district',
-        'village'
+        'village',
+        'reference_school_type_id'
     ];
+
+    public function referenceSchoolType()
+    {
+      return $this->belongsTo('App\Models\ReferenceSchoolType', 'reference_school_type_id');
+    }
+
+    public function schoolOperators()
+    {
+      return $this->hasMany('App\Models\SchoolOperator', 'id');
+    }
+
 }

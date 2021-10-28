@@ -19,7 +19,8 @@ class ReferenceSchoolSeeder extends Seeder
               'address' => 'Jl. Kampung Baru',
               'city' => 'KABUPATEN NUNUKAN',
               'district' => 'KRAYAN',
-              'village' => 'LONG BAWAN'
+              'village' => 'LONG BAWAN',
+              'reference_school_type_id' => 4
           ]
       ]);
     }
