@@ -3,6 +3,8 @@
 $i=1;
 $x=0;
 $a=1;
+$num=1;
+$o=0;
 @endphp
 @section('content')
 <div class="py-16">
@@ -57,27 +59,32 @@ $a=1;
             </div>
           </div>
         </div>
-
         <p class="text-gray-500">{!! $product->description !!}</p>
-
+        <form action="{{ route('useraddtocart', $idEnOkelah)}}" method="POST">
+          @csrf
         <div class="flex py-4 space-x-4">
           <div class="relative">
             <div class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold">Qty</div>
-            <select class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select name="qty" class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
+              @for($o; $o<$product->stock;$o++)
+              <option value="{{$num}}">{{$num}}</option>
+              @php
+              $num=$num+1;
+              @endphp
+              @endfor
             </select>
-
-
           </div>
-
-          <button type="button" class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
+          @if (!Auth::guest())
+          <button type="submit" class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
             Tambahkan Ke Keranjang
           </button>
+          @else
+          <button type="button" onclick="window.location='{{ url ('/login') }}'" class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
+            Tambahkan Ke Keranjang
+          </button>
+          @endif
         </div>
+      </form>
       </div>
     </div>
   </div>

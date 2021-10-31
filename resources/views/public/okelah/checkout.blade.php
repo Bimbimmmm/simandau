@@ -128,8 +128,6 @@
           </div>
         </div>
         <div class="lg:px-2 lg:w-1/2">
-
-
           <div class="p-4 mt-6 bg-gray-100 rounded-full">
             <h1 class="ml-2 font-bold uppercase">Payment Details</h1>
           </div>

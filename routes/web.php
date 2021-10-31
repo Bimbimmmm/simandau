@@ -6,6 +6,7 @@ use App\Http\Controllers\PublicOkelahController;
 use App\Http\Controllers\PublicComplaintController;
 use App\Http\Controllers\PublicAboutUsController;
 use App\Http\Controllers\PublicStatisticController;
+use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\OperatorController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\ReferenceSchoolController;
 use App\Http\Controllers\OperatorProductController;
+use App\Http\Controllers\OperatorBankAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,12 @@ Route::post('/public/news/store', [PublicNewsController::class, 'store'])->middl
 Route::resource('publicokelah', 'PublicOkelahController');
 Route::get('public/okelah', [PublicOkelahController::class, 'index'])->name('publicokelahindex');
 Route::get('public/okelah/view/{idEn}', [PublicOkelahController::class, 'show'])->name('publicokelahshow');
-Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout']);
+Route::get('public/okelah/category/{id}', [PublicOkelahController::class, 'category']);
+Route::post('public/okelah/addcart/{idEn}', [PublicOkelahController::class, 'addcart'])->middleware('can:isGuest')->name('useraddtocart');
+Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout'])->middleware('can:isGuest')->name('usercheckout');
+
+Route::get('public/profile', [PublicProfileController::class, 'index'])->name('publicprofileindex');
+Route::get('public/profile/add', [PublicProfileController::class, 'create'])->name('publicprofileadd');
 
 Route::resource('publicaboutus', 'PublicAboutUsController');
 Route::get('public/aboutus', [PublicAboutUsController::class, 'index'])->name('publicaboutusindex');
@@ -91,6 +98,11 @@ Route::get('/administrator/reference/school/create', [ReferenceSchoolController:
 Route::get('/operator/product', [OperatorProductController::class, 'index'])->middleware('can:isOperator')->name('operatorproductindex');
 Route::get('/operator/product/create', [OperatorProductController::class, 'create'])->middleware('can:isOperator')->name('operatorproductadd');
 Route::post('/operator/product/store', [OperatorProductController::class, 'store'])->middleware('can:isOperator')->name('operatorproductstore');
+
+Route::get('/operator/bank', [OperatorBankAccountController::class, 'index'])->middleware('can:isOperator')->name('operatorbankindex');
+Route::get('/operator/bank/create', [OperatorBankAccountController::class, 'create'])->middleware('can:isOperator')->name('operatorbankadd');
+Route::post('/operator/bank/store', [OperatorBankAccountController::class, 'store'])->middleware('can:isOperator')->name('operatorbankstore');
+Route::get('/operator/bank/store/{id}', [OperatorBankAccountController::class, 'destroy'])->middleware('can:isOperator');
 
 Route::post('dependent-dropdown', 'ReferenceSchoolController@storedistrict')
     ->name('dependent-dropdown.storedistrict');

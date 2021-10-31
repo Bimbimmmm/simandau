@@ -51,6 +51,7 @@ class OperatorProductController extends Controller
             'name'                  => 'required|min:3|max:35|unique:product,name',
             'description'           => 'required|min:3',
             'price'                 => 'required',
+            'stock'                 => 'required|min:1',
             'file'                  => 'required|array',
             'file.*'                => 'image|mimes:jpeg,png,jpg|max:2048'
         ];
@@ -62,7 +63,9 @@ class OperatorProductController extends Controller
             'name.unique'           => 'Nama produk sudah terdaftar',
             'description.required'  => 'Deskripsi produk wajib diisi',
             'description.min'       => 'Nama produk minimal 3 karakter',
-            'price.required'        => 'Harga produk wajib diisi'
+            'price.required'        => 'Harga produk wajib diisi',
+            'stock.required'        => 'Stok produk wajib diisi',
+            'stock.min'             => 'Stok produk minimal 1'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -75,6 +78,7 @@ class OperatorProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->stock = $request->stock;
         $product->is_available = TRUE;
         $product->is_deleted = FALSE;
         $product->user_id = $user_id;

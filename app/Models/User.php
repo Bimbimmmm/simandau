@@ -66,4 +66,24 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Models\NewsComment', 'id');
     }
+
+    public function bankAccounts()
+    {
+      return $this->hasMany('App\Models\BankAccount', 'id');
+    }
+
+    public function userAddresses()
+    {
+      return $this->hasMany('App\Models\UserAddress', 'id');
+    }
+
+    public function carts()
+    {
+      return $this->hasMany('App\Models\Cart', 'id');
+    }
+
+    public function payments()
+    {
+      return $this->hasMany('App\Models\Payment', 'id');
+    }
 }

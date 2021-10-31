@@ -1,4 +1,8 @@
 @extends('layouts.guest')
+@php
+$i=0;
+$x=-1;
+@endphp
 @section('content')
 <div class="bg-gray-100" x-data="{ cartOpen: false , isOpen: false }">
 <header>
@@ -26,15 +30,6 @@
       pojok kerajinan sekolah adalah layanan yang digunakan oleh sekolah untuk menjual
       produk-produk kreatif buatan siswa-siswi di sekolah
     </h3>
-    <div class="relative mt-6 max-w-lg mx-auto">
-      <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
-        <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-
-      <input class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search">
-    </div>
   </div>
 </header>
 <div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'" class="fixed right-0 top-20 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300">
@@ -45,30 +40,29 @@
     </button>
   </div>
   <hr class="my-3">
-  <!-- foreach -->
+  @foreach($carts as $cart)
+  @php
+  $x=$x+1;
+  $price = number_format($cart->product->price,2,',','.');
+  @endphp
   <div class="flex justify-between mt-6">
     <div class="flex">
-      <img class="h-20 w-20 object-cover rounded" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80" alt="">
+      <img class="h-20 w-20 object-cover rounded" src="{{ asset('storage/product/' . $cart_preview[$x]->file) }}" alt="">
       <div class="mx-3">
-        <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
+        <h3 class="text-sm text-gray-600">{{$cart->product->name}}</h3>
         <div class="flex items-center mt-2">
-          <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </button>
-          <span class="text-gray-700 mx-2">2</span>
-          <button class="text-gray-500 focus:outline-none focus:text-gray-600">
-            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </button>
+          <span class="text-gray-700 mx-2">{{$cart->qty}} pcs x</span>
+          <span class="text-gray-600">Rp.{{$price}}</span>
         </div>
       </div>
     </div>
-    <span class="text-gray-600">20$</span>
   </div>
-  <!-- endforeach -->
+  @endforeach
   <a class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500" href="/public/okelah/checkout">
     <span>Checkout</span>
     <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
   </a>
+  <h3 class="text-sm text-gray-400">dengan mengklik tombol checkout pesanan akan dilanjutkan ke pembayaran</h3>
 </div>
 <main class="my-8">
   <div class="container mx-auto px-6">
@@ -79,7 +73,10 @@
           <p class="mt-2 text-gray-400 capitalize">
             bagian ini berisi produk-produk kreatif buatan siswa-siswi berkebutuhan khusus di sekolah luar biasa
           </p>
-          <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+          @php
+          $a=6;
+          @endphp
+          <button onclick="window.location='{{ url ('/public/okelah/category', array( $a )) }}'" class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
             <span>Lihat Sekarang</span>
             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
           </button>
@@ -94,7 +91,10 @@
             <p class="mt-2 text-gray-400 capitalize">
               bagian ini berisi produk-produk kreatif hasil program kewirausahaan siswa-siswi di sekolah menengah atas
             </p>
-            <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+            @php
+            $b=4;
+            @endphp
+            <button onclick="window.location='{{ url ('/public/okelah/category', array( $b )) }}'" class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
               <span>Lihat Sekarang</span>
               <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </button>
@@ -108,7 +108,10 @@
             <p class="mt-2 text-gray-400 capitalize">
               bagian ini berisi produk-produk kreatif hasil program kewirausahaan siswa-siswi di sekolah menengah kejuruan
             </p>
-            <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+            @php
+            $c=5;
+            @endphp
+            <button onclick="window.location='{{ url ('/public/okelah/category', array( $c )) }}'" class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
               <span>Lihat Sekarang</span>
               <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </button>
@@ -118,23 +121,29 @@
     </div>
     <div class="mt-16">
       <h3 class="text-gray-600 text-2xl font-medium text-center">All Product</h3>
-      <!-- foreach -->
+      @foreach($datas as $data)
+      @php
+      $idEnOkelah=Crypt::encrypt($data->id);
+      $price = number_format($data->price,2,',','.');
+      @endphp
       <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
         <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-          <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=376&q=80')">
-            <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+          <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{ asset('storage/product/' . $product_preview[$i]->file) }}')">
+            <button onclick="window.location='{{ url ('/public/okelah/view', array( $idEnOkelah )) }}'" class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
               <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
             </button>
           </div>
           <div class="px-5 py-3">
-            <h3 class="text-blue-300">Seller</h3>
-            <h3 class="text-gray-700 uppercase">Judul</h3>
-            <h3 class="text-gray-700">Deskripsi</h3>
-            <span class="text-gray-500 mt-2">Rp. Harga</span>
+            <h3 class="text-blue-300">{{$data->schoolOperator->school->school_name}}</h3>
+            <h3 class="text-gray-700 uppercase">{{$data->name}}</h3>
+            <span class="text-gray-500 mt-2">Rp. {{$price}}</span>
           </div>
         </div>
       </div>
-      <!-- endforeach -->
+      @php
+      $i=$i+1;
+      @endphp
+      @endforeach
     </div>
   </div>
 </main>

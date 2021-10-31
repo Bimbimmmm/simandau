@@ -34,4 +34,9 @@ class SchoolOperator extends Model
     {
       return $this->hasMany('App\Models\Product', 'id');
     }
+
+    public function bankAccounts()
+    {
+      return $this->hasMany('App\Models\BankAccount', 'id');
+    }
 }

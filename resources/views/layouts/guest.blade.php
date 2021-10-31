@@ -48,7 +48,7 @@
         <div x-show="open" class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20 mt-20 mr-8" style="width:20rem;">
           @if (!Auth::guest())
           <div class="py-2">
-            <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
+            <a href="/public/profile" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
               @if(auth()->user()->avatar_file != null)
               <img class="h-8 w-8 rounded-full object-cover mx-1" src="{{ asset('storage/avatar/' . auth()->user()->avatar_file) }}" alt="avatar">
               @else

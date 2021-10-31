@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductTable extends Migration
+class CreateBankAccountTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,19 @@ class CreateProductTable extends Migration
      */
     public function up()
     {
-      Schema::create('product', function (Blueprint $table) {
+        Schema::create('bank_account', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->string('name');
-          $table->text('description');
-          $table->double('price');
-          $table->integer('stock');
-          $table->boolean('is_available');
-          $table->boolean('is_deleted');
+          $table->string('bank_name');
+          $table->string('owner_name');
+          $table->string('account_number');
+          $table->string('bank_icon');
           $table->integer('user_id');
           $table->foreign('user_id')->references('id')->on('users');
           $table->integer('school_operator_id');
           $table->foreign('school_operator_id')->references('id')->on('school_operator');
-          $table->integer('reference_school_type_id');
-          $table->foreign('reference_school_type_id')->references('id')->on('reference_school_type');
+          $table->boolean('is_deleted');
           $table->timestamps();
-      });
+        });
     }
 
     /**
@@ -38,6 +35,6 @@ class CreateProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('bank_account');
     }
 }

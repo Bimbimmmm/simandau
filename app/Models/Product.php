@@ -42,4 +42,9 @@ class Product extends Model
       return $this->belongsTo('App\Models\SchoolOperator', 'school_operator_id');
     }
 
+    public function carts()
+    {
+      return $this->hasMany('App\Models\Cart', 'id');
+    }
+
 }
