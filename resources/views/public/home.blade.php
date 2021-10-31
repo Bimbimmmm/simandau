@@ -76,13 +76,13 @@ $i=0;
       @foreach($newss as $news)
       @php
       $caption = substr($news->content, 0, 250);
-      $idEn=Crypt::encrypt($news->id);
+      $idEnNews=Crypt::encrypt($news->id);
       @endphp
       <div class="xl:w-1/3 md:w-1/2 p-4">
         <div class="bg-white p-6 rounded-lg">
           <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="{{ asset('storage/news/' . $news->header_image) }}">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{$news->author}}</h3>
-          <a href="{{ url ('/public/news/view', array("$idEn")) }}"><h2 class="text-lg text-gray-900 font-medium title-font mb-4 hover:underline">{{$news->title}}</h2></a>
+          <a href="{{ url ('/public/news/view', array("$idEnNews")) }}"><h2 class="text-lg text-gray-900 font-medium title-font mb-4 hover:underline">{{$news->title}}</h2></a>
           <p class="leading-relaxed text-base">{!! $caption !!}....</p>
         </div>
       </div>
@@ -99,6 +99,7 @@ $i=0;
       <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer p-8">
         <div class="p-4">
           @php
+          $idEnOkelah=Crypt::encrypt($product->id);
           $price = number_format($product->price,2,',','.');
           @endphp
           <spna class="bg-red-500 py-2 px-4 text-sm font-semibold text-white rounded-full cursor-pointer">Rp. {{$price}}</spna>
@@ -109,7 +110,7 @@ $i=0;
           @if($product_image !=null)
           <img class="w-80" src="{{ asset('storage/product/' . $product_image[$i]->file) }}" />
           @endif
-          <p class="absolute text-lg transform translate-x-20 -translate-y-24 bg-blue-600 text-white py-3 px-6 rounded-full cursor-pointer hover:scale-105 duration-500">Lihat Produk</p>
+          <a href="{{ url ('/public/okelah/view', array("$idEnOkelah")) }}" class="absolute text-lg transform translate-x-20 -translate-y-24 bg-blue-600 text-white py-3 px-6 rounded-full cursor-pointer hover:scale-105 duration-500">Lihat Produk</a>
         </div>
       </div>
       @php

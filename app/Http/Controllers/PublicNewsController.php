@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Validator;
+use Session;
 use App\Models\News;
+use App\Models\NewsComment;
 
 class PublicNewsController extends Controller
 {
@@ -37,7 +40,37 @@ class PublicNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'comment'               => 'required|min:3'
+        ];
+
+        $messages = [
+            'comment.required'      => 'Komentar wajib diisi',
+            'comment.min'           => 'Komentar minimal 3 karakter'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $news_id=Crypt::decrypt($request->idEn);
+        $user_id = auth()->user()->id;
+
+        $comment = new NewsComment;
+        $comment->news_id = $news_id;
+        $comment->user_id = $user_id;
+        $comment->comment = $request->comment;
+        $save = $comment->save();
+
+        if($save){
+            Session::flash('success', 'Komentar Berhasil Ditambahkan');
+            return redirect()->back();
+        } else {
+            Session::flash('errors', ['' => 'Gagal Menambahkan Komentar! Silahkan ulangi beberapa saat lagi']);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -50,7 +83,9 @@ class PublicNewsController extends Controller
     {
         $id=Crypt::decrypt($idEn);
         $data=News::where('id', $id)->first();
-        return view('public/news/view', compact('data'));
+        $newss=News::where('is_deleted', FALSE)->latest()->get();
+        $comments=NewsComment::where('news_id', $id)->get();
+        return view('public/news/view', compact('data', 'comments', 'newss'));
     }
 
     /**

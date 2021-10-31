@@ -42,13 +42,10 @@
             <td class="px-4 py-3 text-ms border">{{$data->author}}</td>
             <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
             <td class="px-4 py-3 text-xs border">
-              <a href="#" class="text-green-600 hover:text-green-400 mr-2">
+              <a href="{{ url ('/administrator/news/show', array("$data->id")) }}" class="text-green-600 hover:text-green-400 mr-2">
                 <i class="material-icons-outlined text-base">visibility</i>
               </a>
-              <a href="#" class="text-yellow-600 hover:text-yellow-400  mx-2">
-                <i class="material-icons-outlined text-base">edit</i>
-              </a>
-              <a href="#" class="text-red-600 hover:text-red-400    ml-2">
+              <a href="{{ url ('/administrator/news/destroy', array("$data->id")) }}" class="text-red-600 hover:text-red-400    ml-2">
                 <i class="material-icons-round text-base">delete_outline</i>
               </a>
             </td>

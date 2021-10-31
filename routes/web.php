@@ -46,9 +46,11 @@ require __DIR__.'/auth.php';
 Route::resource('publicnews', 'PublicNewsController');
 Route::get('public/news', [PublicNewsController::class, 'index'])->name('publicnewsindex');
 Route::get('public/news/view/{idEn}', [PublicNewsController::class, 'show'])->name('publicnewsshow');
+Route::post('/public/news/store', [PublicNewsController::class, 'store'])->middleware('can:isGuest')->name('usernewscomment');
 
 Route::resource('publicokelah', 'PublicOkelahController');
 Route::get('public/okelah', [PublicOkelahController::class, 'index'])->name('publicokelahindex');
+Route::get('public/okelah/view/{idEn}', [PublicOkelahController::class, 'show'])->name('publicokelahshow');
 Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout']);
 
 Route::resource('publicaboutus', 'PublicAboutUsController');
@@ -70,6 +72,10 @@ Route::get('/administrator/message', [AdminMessageController::class, 'index'])->
 Route::get('/administrator/news', [AdminNewsController::class, 'index'])->middleware('can:isAdmin')->name('adminnewsindex');
 Route::get('/administrator/news/create', [AdminNewsController::class, 'create'])->middleware('can:isAdmin')->name('adminnewscreate');
 Route::post('/administrator/news/store', [AdminNewsController::class, 'store'])->middleware('can:isAdmin')->name('adminnewsstore');
+Route::get('/administrator/news/show/{id}', [AdminNewsController::class, 'show'])->middleware('can:isAdmin');
+Route::get('/administrator/news/edit/{id}', [AdminNewsController::class, 'edit'])->middleware('can:isAdmin');
+Route::get('/administrator/news/destroy/{id}', [AdminNewsController::class, 'destroy'])->middleware('can:isAdmin');
+Route::get('/administrator/news/destroycomment/{id}', [AdminNewsController::class, 'destroycomment'])->middleware('can:isAdmin');
 
 Route::get('/administrator/product', [AdminProductController::class, 'index'])->middleware('can:isAdmin')->name('adminproductindex');
 

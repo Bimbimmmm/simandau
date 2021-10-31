@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\NewsComment;
 use Validator;
 use Session;
 
@@ -83,7 +84,7 @@ class AdminNewsController extends Controller
         $news->is_deleted = FALSE;
         $save = $news->save();
 
-        if($news){
+        if($save){
             Session::flash('success', 'Berita Berhasil Ditambahkan');
             return redirect()->route('adminnewsindex');
         } else {
@@ -100,7 +101,9 @@ class AdminNewsController extends Controller
      */
     public function show($id)
     {
-        //
+      $news=News::where('id', $id)->first();
+      $comments=NewsComment::where('news_id', $id)->get();
+      return view('administrator/news/view', compact('news', 'comments'));
     }
 
     /**
@@ -111,7 +114,8 @@ class AdminNewsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $news=News::where('id', $id)->first();
+      return view('administrator/news/edit', compact('news'));
     }
 
     /**
@@ -134,6 +138,17 @@ class AdminNewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $news = News::findOrFail($id);
+      $news->update([
+            'is_deleted'   => TRUE
+        ]);
+      return redirect()->back();
+    }
+
+    public function destroycomment($id)
+    {
+      $delete = NewsComment::findOrFail($id);
+      $delete->delete();
+      return redirect()->back();
     }
 }

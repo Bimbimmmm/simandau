@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Models\SchoolOperator', 'id');
     }
+
+    public function comments()
+    {
+      return $this->hasMany('App\Models\NewsComment', 'id');
+    }
 }

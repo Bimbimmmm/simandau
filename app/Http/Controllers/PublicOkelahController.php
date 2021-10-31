@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use App\Models\Product;
+use App\Models\ProductImage;
 
 class PublicOkelahController extends Controller
 {
@@ -48,9 +51,12 @@ class PublicOkelahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idEn)
     {
-        //
+      $id=Crypt::decrypt($idEn);
+      $product=Product::where('id', $id)->first();
+      $product_images=ProductImage::where('product_id', $product->id)->get();
+      return view('public/okelah/view', compact('product', 'product_images'));
     }
 
     /**
