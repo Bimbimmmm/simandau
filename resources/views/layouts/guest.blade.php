@@ -10,12 +10,15 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="{{ asset('js/alpine.min.js') }}"></script>
+  <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 </head>
 <body class="font-roboto">
+  @include('sweetalert::alert')
   <div class="flex flex-wrap h-screen" x-data="{open: false , isOpen: false }">
     <section class="relative mx-auto">
       <!-- navbar -->
@@ -58,7 +61,7 @@
                 <span class="font-bold" href="#">{{auth()->user()->first_name}} {{auth()->user()->last_name}}
                 </p>
               </a>
-              <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
+              <a href="/public/okelah/payment" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
                 <p class="text-gray-600 text-sm mx-2">
                   <span class="font-bold" href="#">Payment History
                   </p>

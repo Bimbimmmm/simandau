@@ -7,6 +7,7 @@ use App\Http\Controllers\PublicComplaintController;
 use App\Http\Controllers\PublicAboutUsController;
 use App\Http\Controllers\PublicStatisticController;
 use App\Http\Controllers\PublicProfileController;
+use App\Http\Controllers\PublicPaymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\OperatorController;
@@ -56,6 +57,9 @@ Route::get('public/okelah/view/{idEn}', [PublicOkelahController::class, 'show'])
 Route::get('public/okelah/category/{id}', [PublicOkelahController::class, 'category']);
 Route::post('public/okelah/addcart/{idEn}', [PublicOkelahController::class, 'addcart'])->middleware('can:isGuest')->name('useraddtocart');
 Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout'])->middleware('can:isGuest')->name('usercheckout');
+Route::post('public/okelah/pay', [PublicOkelahController::class, 'store'])->middleware('can:isGuest')->name('userpay');
+
+Route::get('public/okelah/payment', [PublicPaymentController::class, 'index'])->middleware('can:isGuest')->name('userpaymentindex');
 
 Route::get('public/profile', [PublicProfileController::class, 'index'])->name('publicprofileindex');
 Route::get('public/profile/add', [PublicProfileController::class, 'create'])->name('publicprofileadd');

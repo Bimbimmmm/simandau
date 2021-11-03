@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
-use App\Models\Product;
+use Alert;
+use App\Models\Products;
 use App\Models\ProductImage;
 use App\Models\SchoolOperator;
 use App\Models\ReferenceSchool;
@@ -20,8 +21,8 @@ class OperatorProductController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $datas=Product::where(['user_id' => $user_id, 'is_deleted' => FALSE])->get();
-        $count=Product::where(['user_id' => $user_id, 'is_deleted' => FALSE])->count();
+        $datas=Products::where(['user_id' => $user_id, 'is_deleted' => FALSE])->get();
+        $count=Products::where(['user_id' => $user_id, 'is_deleted' => FALSE])->count();
         return view('operator/product/index', compact('datas' , 'count'));
     }
 
@@ -52,6 +53,7 @@ class OperatorProductController extends Controller
             'description'           => 'required|min:3',
             'price'                 => 'required',
             'stock'                 => 'required|min:1',
+            'weight'                => 'required',
             'file'                  => 'required|array',
             'file.*'                => 'image|mimes:jpeg,png,jpg|max:2048'
         ];
@@ -65,7 +67,8 @@ class OperatorProductController extends Controller
             'description.min'       => 'Nama produk minimal 3 karakter',
             'price.required'        => 'Harga produk wajib diisi',
             'stock.required'        => 'Stok produk wajib diisi',
-            'stock.min'             => 'Stok produk minimal 1'
+            'stock.min'             => 'Stok produk minimal 1',
+            'weight.required'       => 'Berat produk wajib diisi'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -74,11 +77,12 @@ class OperatorProductController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
 
-        $product = new Product;
+        $product = new Products;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
+        $product->weight = $request->weight;
         $product->is_available = TRUE;
         $product->is_deleted = FALSE;
         $product->user_id = $user_id;
@@ -86,7 +90,7 @@ class OperatorProductController extends Controller
         $product->reference_school_type_id = $ref->reference_school_type_id;
         $save = $product->save();
 
-        $get_product_id=Product::where('name', $request->name)->first();
+        $get_product_id=Products::where('name', $request->name)->first();
 
         $count = count($request->file);
         for ($i=0; $i < $count; $i++) {
@@ -99,10 +103,10 @@ class OperatorProductController extends Controller
         }
 
         if($save2){
-            Session::flash('success', 'Produk Berhasil Ditambahkan');
+            Alert::success('Berhasil', 'Produk Berhasil Ditambahkan');
             return redirect()->route('operatorproductindex');
         } else {
-            Session::flash('errors', ['' => 'Gagal Menambahkan Produk! Silahkan ulangi beberapa saat lagi']);
+            Alert::error('Gagal', 'Gagal Menambahkan Produk! Silahkan ulangi beberapa saat lagi');
             return redirect()->route('operatorproductadd');
         }
     }

@@ -1,4 +1,14 @@
 @extends('layouts.guest')
+@php
+$total_price=0;
+$i=0;
+$totp=0;
+$total_cost_encrypted=0;
+$shipping_cost_encrypted=0;
+$fp=0;
+$cart_id=[];
+$x=-1;
+@endphp
 @section('content')
 <div class="flex justify-center my-6">
   <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -13,7 +23,7 @@
             </a>
           </div>
           <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">
-            Payment Details
+            Detail Keranjang
           </div>
           <div class="flex items-center justify-end w-full">
           </div>
@@ -25,160 +35,131 @@
         <thead>
           <tr class="h-12 uppercase">
             <th class="hidden md:table-cell"></th>
-            <th class="text-left">Bank</th>
-            <th class="hidden text-right md:table-cell">Account Number</th>
-            <th class="hidden text-right md:table-cell">Account Name</th>
+            <th class="text-left">Nama Produk</th>
+            <th class="text-left">Asal Produk</th>
+            <th class="hidden text-right md:table-cell">Jumlah Produk</th>
+            <th class="hidden text-right md:table-cell">Harga Produk</th>
+            <th class="hidden text-right md:table-cell">Total Harga</th>
           </tr>
         </thead>
         <tbody>
+          @foreach($carts as $cart)
           <tr>
             <td class="hidden pb-4 md:table-cell">
-              <a href="#">
-                <img src="{{ asset('images/bri.png') }}" class="w-20 rounded" alt="Thumbnail">
+              <a>
+                <img src="{{ asset('storage/product/' . $product_preview[$i]->file) }}" class="w-20 rounded" alt="Thumbnail">
               </a>
             </td>
             <td>
-              <a href="#">
-                <p class="mb-2 md:ml-4">Bank Rakyat Indonesia (BRI)</p>
-              </a>
-            </td>
-            <td class="hidden text-right md:table-cell">
-              <span class="text-sm lg:text-base font-medium">
-                501801024604531
-              </span>
-            </td>
-            <td class="hidden text-right md:table-cell">
-              <span class="text-sm lg:text-base font-medium">
-                Indah Nurul Aprilia
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="hidden pb-4 md:table-cell">
-              <a href="#">
-                <img src="{{ asset('images/bca.png') }}" class="w-20 rounded" alt="Thumbnail">
+              <a>
+                <p class="mb-2 md:ml-4">{{$cart->product->name}}</p>
               </a>
             </td>
             <td>
-              <a href="#">
-                <p class="mb-2 md:ml-4">Bank Central Asia (BCA)</p>
+              <a>
+                <p class="mb-2 md:ml-4">{{$cart->product->schoolOperator->school->school_name}}</p>
               </a>
             </td>
             <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
-                8735427152
+                {{$cart->qty}}
+              </span>
+            </td>
+            @php
+            $price = number_format($cart->product->price,2,',','.');
+            $tot = $cart->qty * $cart->product->price;
+            $total = number_format($tot,2,',','.');
+            $totp = $totp + $tot;
+            $total_cost_encrypted=Crypt::encrypt($totp);
+            $shipping_cost_encrypted=Crypt::encrypt($shippingCost);
+            $total_price = number_format($totp,2,',','.');
+            $shipping_cost = number_format($shippingCost,2,',','.');
+            $pf = $shippingCost + $totp;
+            $final_price = number_format($pf,2,',','.');
+            @endphp
+            <td class="hidden text-right md:table-cell">
+              <span class="text-sm lg:text-base font-medium">
+                Rp. {{$price}}
               </span>
             </td>
             <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
-                Indah Nurul Aprilia
+                Rp. {{$total}}
               </span>
             </td>
           </tr>
+        @endforeach
         </tbody>
       </table>
       <hr class="pb-6 mt-6">
-      <div class="my-4 mt-6 -mx-2 lg:flex">
+      <form action="{{ route('userpay')}}" method="POST">
+          @csrf
+        <div class="my-4 mt-6 -mx-2 lg:flex">
         <div class="lg:px-2 lg:w-1/2">
           <div class="p-4 bg-gray-100 rounded-full">
-            <h1 class="ml-2 font-bold uppercase">Order Details</h1>
+            <h1 class="ml-2 font-bold uppercase">Alamat Pengiriman</h1>
           </div>
           <div class="p-4">
-            <p class="mb-6 italic">Shipping and additionnal costs are calculated based on values you have entered</p>
-            <div class="flex justify-between border-b">
-              <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Product
-              </div>
-              <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                aaa
-              </div>
+            <div class="justify-center md:flex">
+              <p class="mb-4 text-base">{{$address->address}}, {{$address->village}}, {{$address->district}}, {{$address->city}}, {{$address->province}}, {{$address->zip_code}}</p>
             </div>
-            <div class="flex justify-between pt-4 border-b">
-              <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Subtotal
-              </div>
-              <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                rp
-              </div>
-            </div>
-            <div class="flex justify-between pt-4 border-b">
-              <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Shipping Cost
-              </div>
-              <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                ongkir
-              </div>
-            </div>
-            <div class="flex justify-between pt-4 border-b">
-              <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Total
-              </div>
-              <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                rp
-              </div>
-            </div>
-            <div class="flex justify-between pt-4 border-b">
-              <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Status
-              </div>
-              <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                status
-              </div>
-            </div>
+          </div>
+          <div class="p-4 mt-6 bg-gray-100 rounded-full">
+            <h1 class="ml-2 font-bold uppercase">Catatan Untuk Penjual</h1>
+          </div>
+          <div class="p-4">
+            <p class="mb-4 italic">Masukkan catatan mengenai detail pengiriman</p>
+            <textarea name="notes" class="w-full h-24 p-2 bg-gray-100 rounded"></textarea>
           </div>
         </div>
         <div class="lg:px-2 lg:w-1/2">
-          <div class="p-4 mt-6 bg-gray-100 rounded-full">
-            <h1 class="ml-2 font-bold uppercase">Payment Details</h1>
+          <div class="p-4 bg-gray-100 rounded-full">
+            <h1 class="ml-2 font-bold uppercase">Detail Pesanan</h1>
           </div>
-          <p class="mb-6 italic">Payment is successful, waiting for seller verification and order delivery</p>
-          <div class="flex justify-between border-b">
-            <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-              Date Payed
-            </div>
-            <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-              dd/mm/yyyy
-            </div>
+          <div class="p-4">
+            <p class="mb-6 italic">Ongkos kirim dan ongkos packing dihitung berdasarkan berat barang dan jarak pengiriman</p>
+              <div class="flex justify-between border-b">
+                <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
+                  Subtotal
+                </div>
+                <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
+                  Rp. {{$total_price}}
+                </div>
+              </div>
+                <div class="flex justify-between pt-4 border-b">
+                  <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
+                    Ongkos Kirim
+                  </div>
+                  <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
+                    Rp. {{$shipping_cost}}
+                  </div>
+                </div>
+                <div class="flex justify-between pt-4 border-b">
+                  <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
+                    Total
+                  </div>
+                  <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
+                    Rp . {{$final_price}}
+                  </div>
+                </div>
+              <input type="hidden" id="tce" name="tce" value="{{$total_cost_encrypted}}">
+              <input type="hidden" id="sce" name="sce" value="{{$shipping_cost_encrypted}}">
+              @foreach($carts as $cart)
+              @php
+              $x=$x+1;
+              $pie=Crypt::encrypt($cart->id);
+              @endphp
+              <input type="hidden" id="cart_id[{{$x}}]" name="cart_id[{{$x}}]" value="{{$pie}}">
+              @endforeach
+              <a>
+                <button type="submit" class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                  <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
+                  <span class="ml-2 mt-5px">Procceed to checkout</span>
+                </button>
+              </a>
+            </form>
           </div>
-          <div class="p-4 mt-6 bg-gray-100 rounded-full">
-            <h1 class="ml-2 font-bold uppercase">Payment Proof</h1>
-          </div>
-          <form action="" method="POST" enctype="multipart/form-data">
-              @csrf
-              @method('PUT')
-          <div class="flex w-full h-48 items-center justify-center bg-grey-lighter">
-            <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
-              <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-              </svg>
-              <span class="mt-2 text-base leading-normal">Select a file</span>
-              <input name="paymentproof" type='file' class="hidden" />
-            </label>
-          </div>
-            <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-              </svg>
-              <span class="ml-2 mt-5px">Upload Payment Proof</span>
-            </button>
         </div>
-      </form>
-      <div class="flex justify-between border-b">
-        <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-          Date Shipped
-        </div>
-        <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-          dd/mm/yyyy
-        </div>
-      </div>
-      <div class="flex justify-between border-b">
-        <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-          Airwaybill
-        </div>
-        <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-           by JNE
-        </div>
-      </div>
       </div>
     </div>
   </div>

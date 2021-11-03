@@ -32,7 +32,7 @@ class SchoolOperator extends Model
 
     public function products()
     {
-      return $this->hasMany('App\Models\Product', 'id');
+      return $this->hasMany('App\Models\Products', 'id');
     }
 
     public function bankAccounts()
