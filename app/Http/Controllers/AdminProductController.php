@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Products;
 
 class AdminProductController extends Controller
 {
@@ -13,7 +14,8 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        return view('administrator/product/index');
+        $datas=Products::where('is_deleted', FALSE)->get();
+        return view('administrator/product/index', compact('datas'));
     }
 
     /**

@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\ReferenceSchoolController;
 use App\Http\Controllers\OperatorProductController;
 use App\Http\Controllers\OperatorBankAccountController;
+use App\Http\Controllers\OperatorPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +59,12 @@ Route::get('public/okelah/category/{id}', [PublicOkelahController::class, 'categ
 Route::post('public/okelah/addcart/{idEn}', [PublicOkelahController::class, 'addcart'])->middleware('can:isGuest')->name('useraddtocart');
 Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout'])->middleware('can:isGuest')->name('usercheckout');
 Route::post('public/okelah/pay', [PublicOkelahController::class, 'store'])->middleware('can:isGuest')->name('userpay');
+Route::delete('public/okelah/destroy/{id}', [PublicOkelahController::class, 'destroy'])->name('userokelah.destroy');
+
 
 Route::get('public/okelah/payment', [PublicPaymentController::class, 'index'])->middleware('can:isGuest')->name('userpaymentindex');
+Route::get('public/okelah/payment/{idEn}', [PublicPaymentController::class, 'show'])->middleware('can:isGuest')->name('userpaymentview');
+Route::post('public/okelah/payment/proof/{idEn}', [PublicPaymentController::class, 'update'])->middleware('can:isGuest')->name('paymentproof');
 
 Route::get('public/profile', [PublicProfileController::class, 'index'])->name('publicprofileindex');
 Route::get('public/profile/add', [PublicProfileController::class, 'create'])->name('publicprofileadd');
@@ -93,6 +98,10 @@ Route::get('/administrator/product', [AdminProductController::class, 'index'])->
 Route::get('/administrator/ticket', [AdminTicketController::class, 'index'])->middleware('can:isAdmin')->name('adminticketindex');
 
 Route::get('/administrator/transaction', [AdminTransactionController::class, 'index'])->middleware('can:isAdmin')->name('admintransactionindex');
+Route::get('/administrator/transaction/show/{idEn}', [AdminTransactionController::class, 'show'])->middleware('can:isAdmin')->name('admintransactionshow');
+Route::post('/administrator/transaction/accept/{idEn}', [AdminTransactionController::class, 'update'])->middleware('can:isAdmin')->name('admintransactionaccept');
+Route::post('/administrator/transaction/reject/{idEn}', [AdminTransactionController::class, 'reject'])->middleware('can:isAdmin')->name('admintransactionreject');
+
 
 //Reference Routes
 Route::get('/administrator/reference/school', [ReferenceSchoolController::class, 'index'])->middleware('can:isAdmin')->name('adminrefschool');
@@ -107,6 +116,11 @@ Route::get('/operator/bank', [OperatorBankAccountController::class, 'index'])->m
 Route::get('/operator/bank/create', [OperatorBankAccountController::class, 'create'])->middleware('can:isOperator')->name('operatorbankadd');
 Route::post('/operator/bank/store', [OperatorBankAccountController::class, 'store'])->middleware('can:isOperator')->name('operatorbankstore');
 Route::get('/operator/bank/store/{id}', [OperatorBankAccountController::class, 'destroy'])->middleware('can:isOperator');
+
+Route::get('/operator/payment', [OperatorPaymentController::class, 'index'])->middleware('can:isOperator')->name('operatorpayment');
+Route::get('/operator/payment/view/{idEn}', [OperatorPaymentController::class, 'show'])->middleware('can:isOperator')->name('operatorpaymentshow');
+Route::post('/operator/payment/accept/{idEn}', [OperatorPaymentController::class, 'update'])->middleware('can:isOperator')->name('operatorpaymentupdate');
+Route::post('/operator/payment/reject/{idEn}', [OperatorPaymentController::class, 'reject'])->middleware('can:isOperator')->name('operatorpaymentreject');
 
 Route::post('dependent-dropdown', 'ReferenceSchoolController@storedistrict')
     ->name('dependent-dropdown.storedistrict');

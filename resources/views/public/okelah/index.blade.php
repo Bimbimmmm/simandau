@@ -44,7 +44,7 @@ $x=-1;
     @foreach($carts as $cart)
     @php
     $x=$x+1;
-    $price = number_format($cart->product->price,2,',','.');
+    $price = number_format($cart->product->price,0,',','.');
     @endphp
     <div class="flex justify-between mt-6">
       <div class="flex">
@@ -52,9 +52,16 @@ $x=-1;
         <div class="mx-3">
           <h3 class="text-sm text-gray-600">{{$cart->product->name}}</h3>
           <div class="flex items-center mt-2">
-            <span class="text-gray-700 mx-2">{{$cart->qty}} pcs x</span>
-            <span class="text-gray-600">Rp.{{$price}}</span>
+            <span class="text-gray-600">Rp.{{$price}} x</span>
+            <span class="text-gray-700 mx-2">{{$cart->qty}} pcs</span>
           </div>
+          <h3 class="text-xs text-gray-600">
+            <form method="POST" action="{{ route('userokelah.destroy', $cart->id) }}">
+              @csrf
+              <input name="_method" type="hidden" value="DELETE">
+              <button onclick="deleteItem(this)" data-id="{{ $cart->id }}">Remove</button>
+            </form>
+          </h3>
         </div>
       </div>
     </div>
@@ -182,5 +189,26 @@ function checkoutConfirmation() {
     return false;
   })
 }
+</script>
+
+<script type="text/javascript">
+$('.show_confirm').click(function(event) {
+  var form =  $(this).closest("form");
+  var name = $(this).data("name");
+  event.preventDefault();
+  swal({
+    title: `Are you sure you want to delete this record?`,
+    text: "If you delete this, it will be gone forever.",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+
+  .then((willDelete) => {
+    if (willDelete) {
+      form.submit();
+    }
+  });
+});
 </script>
 @endsection

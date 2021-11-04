@@ -76,6 +76,7 @@ $x=-1;
             $shipping_cost = number_format($shippingCost,2,',','.');
             $pf = $shippingCost + $totp;
             $final_price = number_format($pf,2,',','.');
+            $i=$i+1;
             @endphp
             <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
 use Validator;
 use Session;
 use Alert;
@@ -71,9 +70,12 @@ class PublicOkelahController extends Controller
   {
     $user_id = auth()->user()->id;
     $product_preview = [];
+    $seller = [];
+    $seller_id=0;
     $product_weight = 0;
     $weight=0;
     $i=0;
+    $a=0;
     $carts=Cart::where(['user_id' => $user_id, 'is_checkouted' => FALSE])->get();
     $count=Cart::where(['user_id' => $user_id, 'is_checkouted' => FALSE])->count();
     $address=UserAddress::where('user_id', $user_id)->first();
@@ -85,8 +87,20 @@ class PublicOkelahController extends Controller
         $product_preview_cart=ProductImage::where('product_id', $cart->product_id)->first();
         $product_preview[$i] = $product_preview_cart;
         $product_weight=$product_weight + $cart->product->weight;
+        $seller_id=$cart->product->school_operator_id;
+
+        if($seller != null){
+          if($seller[$a] != $seller_id){
+            $seller[$i] = $seller_id;
+            $a=$a+1;
+          }
+        }else{
+          $seller[$i] = $seller_id;
+        }
+
         $i=$i+1;
       }
+      $count_seller = count($seller);
       $weight=$product_weight * 1000;
       //Get Shipping Cost STILL BUG
       /*
@@ -133,7 +147,7 @@ class PublicOkelahController extends Controller
       $cost = json_decode($response->getBody(), true);
       $shipping_cost = $cost['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
       */
-      $shippingCost = 15000;
+      $shippingCost = 15000 * $count_seller;
       return view('public/okelah/checkout', compact('carts', 'product_preview', 'address', 'shippingCost'));
     }
   }
@@ -159,10 +173,14 @@ class PublicOkelahController extends Controller
     $total_cost=Crypt::decrypt($request->tce);
     $shipping_cost=Crypt::decrypt($request->sce);
     $user_id = auth()->user()->id;
+    $get_address=UserAddress::where('user_id', $user_id)->first();
+    $address = $get_address->address . ', ' . $get_address->province . ', ' . $get_address->city . ', ' . $get_address->district . ', ' . $get_address->village . ', ' . $get_address->zip_code;
 
-    /*$payment = new Payment;
+    $payment = new Payment;
     $payment->user_id = $user_id;
+    $payment->notes = $request->notes;
     $payment->status = "Belum Dibayar";
+    $payment->address = $address;
     $payment->total_cost = $total_cost;
     $payment->shipping_cost = $shipping_cost;
     $payment->is_payed = FALSE;
@@ -170,7 +188,7 @@ class PublicOkelahController extends Controller
     $payment->is_pending = FALSE;
     $payment->is_rejected = FALSE;
     $save = $payment->save();
-    */
+
     $data = Payment::where(['user_id' => $user_id, 'total_cost' => $total_cost, 'is_payed' => FALSE])->first();
 
     $count=count($request->cart_id);
@@ -217,7 +235,7 @@ class PublicOkelahController extends Controller
         return redirect()->back()->withErrors($validator)->withInput($request->all);
     }
 
-    $check=Cart::where(['user_id' => $user_id, 'product_id' => $id])->first();
+    $check=Cart::where(['user_id' => $user_id, 'product_id' => $id, 'is_checkouted' => FALSE])->first();
 
     if($check == null){
       $cart = new Cart;
@@ -282,6 +300,7 @@ class PublicOkelahController extends Controller
   */
   public function destroy($id)
   {
-    //
+    Cart::find($id)->delete();
+    return back();
   }
 }

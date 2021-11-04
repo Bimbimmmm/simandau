@@ -19,6 +19,7 @@ class CreatePaymentsTable extends Migration
           $table->foreign('user_id')->references('id')->on('users');
           $table->string('notes')->nullable();
           $table->string('status');
+          $table->string('address');
           $table->double('total_cost');
           $table->string('shipping_carrier')->nullable();
           $table->double('shipping_cost');
