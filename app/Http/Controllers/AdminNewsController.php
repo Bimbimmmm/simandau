@@ -85,10 +85,10 @@ class AdminNewsController extends Controller
         $save = $news->save();
 
         if($save){
-            Session::flash('success', 'Berita Berhasil Ditambahkan');
+            Alert::success('Berhasil', 'Berita Berhasil Dibuat');
             return redirect()->route('adminnewsindex');
         } else {
-            Session::flash('errors', ['' => 'Gagal Menambahkan Berita! Silahkan ulangi beberapa saat lagi']);
+            Alert::error('Gagal', 'Gagal Membuat Berita! Silahkan ulangi beberapa saat lagi');
             return redirect()->route('adminnewscreate');
         }
     }

@@ -36,7 +36,7 @@
             <li><a class="hover:text-yellow-600" href="/public/statistic">Statistik</a></li>
             <li><a class="hover:text-yellow-600" href="/public/aboutus">Tentang Kami</a></li>
             <li><a class="hover:text-yellow-600" href="/public/complaint">Layanan Pengaduan</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/complaint">Layanan Persuratan</a></li>
+            <li><a class="hover:text-yellow-600" href="/public/mail">Layanan Persuratan</a></li>
           </ul>
           <!-- Header Icons -->
           <div class="hidden xl:flex items-center space-x-5 items-center">

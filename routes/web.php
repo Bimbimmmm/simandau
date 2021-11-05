@@ -1,6 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminMessageController;
+use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminTicketController;
+use App\Http\Controllers\AdminTransactionController;
+use App\Http\Controllers\AdminMailController;
+use App\Http\Controllers\ReferenceSchoolController;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\OperatorProductController;
+use App\Http\Controllers\OperatorBankAccountController;
+use App\Http\Controllers\OperatorPaymentController;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\PublicNewsController;
 use App\Http\Controllers\PublicOkelahController;
 use App\Http\Controllers\PublicComplaintController;
@@ -8,20 +23,7 @@ use App\Http\Controllers\PublicAboutUsController;
 use App\Http\Controllers\PublicStatisticController;
 use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\PublicPaymentController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdministratorController;
-use App\Http\Controllers\OperatorController;
-use App\Http\Controllers\PublicController;
-use App\Http\Controllers\AdminUserController;
-use App\Http\Controllers\AdminMessageController;
-use App\Http\Controllers\AdminNewsController;
-use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\AdminTicketController;
-use App\Http\Controllers\AdminTransactionController;
-use App\Http\Controllers\ReferenceSchoolController;
-use App\Http\Controllers\OperatorProductController;
-use App\Http\Controllers\OperatorBankAccountController;
-use App\Http\Controllers\OperatorPaymentController;
+use App\Http\Controllers\PublicIncomingMailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +80,10 @@ Route::get('public/complaint', [PublicComplaintController::class, 'index'])->nam
 Route::resource('publicstatistic', 'PublicStatisticController');
 Route::get('public/statistic', [PublicStatisticController::class, 'index'])->name('publicstatisticindex');
 
+Route::get('public/mail', [PublicIncomingMailController::class, 'index'])->name('publicmail');
+Route::get('public/mail/add', [PublicIncomingMailController::class, 'create'])->name('publicmailadd');
+Route::post('/public/mail/store', [PublicIncomingMailController::class, 'store'])->name('publicmailstore');
+
 //Admin Routes
 Route::get('/administrator/users', [AdminUserController::class, 'index'])->middleware('can:isAdmin')->name('adminuserindex');
 Route::get('/administrator/users/create', [AdminUserController::class, 'create'])->middleware('can:isAdmin')->name('adminusercreate');
@@ -96,6 +102,9 @@ Route::get('/administrator/news/destroycomment/{id}', [AdminNewsController::clas
 Route::get('/administrator/product', [AdminProductController::class, 'index'])->middleware('can:isAdmin')->name('adminproductindex');
 
 Route::get('/administrator/ticket', [AdminTicketController::class, 'index'])->middleware('can:isAdmin')->name('adminticketindex');
+
+Route::get('/administrator/mail', [AdminMailController::class, 'index'])->middleware('can:isAdmin')->name('adminmailindex');
+Route::get('/administrator/mail/destroy/{id}', [AdminMailController::class, 'destroy'])->middleware('can:isAdmin')->name('adminmailidestroy');
 
 Route::get('/administrator/transaction', [AdminTransactionController::class, 'index'])->middleware('can:isAdmin')->name('admintransactionindex');
 Route::get('/administrator/transaction/show/{idEn}', [AdminTransactionController::class, 'show'])->middleware('can:isAdmin')->name('admintransactionshow');
