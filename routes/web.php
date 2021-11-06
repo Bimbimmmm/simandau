@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminMessageController;
@@ -49,6 +50,20 @@ Route::get('/operator', [OperatorController::class, 'index'])->middleware('can:i
 
 require __DIR__.'/auth.php';
 
+Route::get('getCity/{id}', function ($id) {
+    $cities = App\Models\Cities::where('province_code',$id)->get();
+    return response()->json($cities);
+});
+
+Route::get('getDistrict/{id}', function ($id) {
+    $districts = App\Models\Districts::where('city_code',$id)->get();
+    return response()->json($districts);
+});
+
+Route::get('getVillage/{id}', function ($id) {
+    $villages = App\Models\Villages::where('district_code',$id)->get();
+    return response()->json($villages);
+});
 //Public Routes
 Route::resource('publicnews', 'PublicNewsController');
 Route::get('public/news', [PublicNewsController::class, 'index'])->name('publicnewsindex');
@@ -141,9 +156,6 @@ Route::get('/operator/payment', [OperatorPaymentController::class, 'index'])->mi
 Route::get('/operator/payment/view/{idEn}', [OperatorPaymentController::class, 'show'])->middleware('can:isOperator')->name('operatorpaymentshow');
 Route::post('/operator/payment/accept/{idEn}', [OperatorPaymentController::class, 'update'])->middleware('can:isOperator')->name('operatorpaymentupdate');
 Route::post('/operator/payment/reject/{idEn}', [OperatorPaymentController::class, 'reject'])->middleware('can:isOperator')->name('operatorpaymentreject');
-
-Route::post('dependent-dropdown', 'ReferenceSchoolController@storedistrict')
-    ->name('dependent-dropdown.storedistrict');
 
 /*
 Route::resource('seller', 'SellerProductController');

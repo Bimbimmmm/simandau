@@ -29,6 +29,7 @@ class User extends Authenticatable
         'mac_address',
         'ip_address',
         'avatar_file',
+        'is_deleted',
     ];
 
     /**
