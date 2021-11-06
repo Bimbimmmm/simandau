@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\NewsComment;
 use Validator;
-use Session;
+use Alert;
 
 class AdminNewsController extends Controller
 {

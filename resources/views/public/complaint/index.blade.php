@@ -32,8 +32,9 @@
         <p class="font-normal text-gray-700 mb-3 capitalize text-center">
           e-Ticketing SIMANDAU adalah layanan yang terdapat pada aplikasi SIMANDAU terkait dengan pelayanan Cabang
           dinas pendidikan dan kebudayaan provinsi kalimantan utara wilayah nunukan yang diselesaikan secara online
+          dalam bentuk live chat
         </p>
-        <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+        <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="/public/complaint/ticketing">
           Kunjungi
         </a>
       </div>

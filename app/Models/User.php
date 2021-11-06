@@ -91,4 +91,14 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Models\IncomingMail', 'id');
     }
+
+    public function ticketings()
+    {
+      return $this->hasMany('App\Models\Ticketing', 'id');
+    }
+
+    public function ticketingMessages()
+    {
+      return $this->hasMany('App\Models\TicketingMessage', 'id');
+    }
 }

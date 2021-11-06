@@ -65,10 +65,10 @@ class PublicNewsController extends Controller
         $save = $comment->save();
 
         if($save){
-            Session::flash('success', 'Komentar Berhasil Ditambahkan');
+            Alert::success('Berhasil', 'Komentar Berhasil Diambahkan');
             return redirect()->back();
         } else {
-            Session::flash('errors', ['' => 'Gagal Menambahkan Komentar! Silahkan ulangi beberapa saat lagi']);
+            Alert::error('Gagal', 'Gagal Menambahkan Komentar! Silahkan ulangi beberapa saat lagi');
             return redirect()->back();
         }
     }

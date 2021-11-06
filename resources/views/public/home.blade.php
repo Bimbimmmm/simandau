@@ -5,7 +5,7 @@ $i=0;
 @section('content')
 <!-- Welcome HERO -->
 
-<div class="flex flex-wrap justify-center">
+<div class="flex flex-wrap justify-center animate__animated animate__fadeInUp">
   <img src="{{asset('images/rev.jpg')}}" >
 </div>
 <!-- Service Product HERO -->

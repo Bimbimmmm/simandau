@@ -22,6 +22,8 @@
     },
     "dependencies": {
         "@iconscout/unicons": "^4.0.0",
-        "echarts": "^5.2.1"
+        "animate.css": "^4.1.1",
+        "aos": "^2.3.4",
+        "echarts": "^5.2.2"
     }
 }

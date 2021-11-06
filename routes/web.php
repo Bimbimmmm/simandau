@@ -24,6 +24,7 @@ use App\Http\Controllers\PublicStatisticController;
 use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\PublicPaymentController;
 use App\Http\Controllers\PublicIncomingMailController;
+use App\Http\Controllers\PublicTicketingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,12 @@ Route::get('public/mail', [PublicIncomingMailController::class, 'index'])->name(
 Route::get('public/mail/add', [PublicIncomingMailController::class, 'create'])->name('publicmailadd');
 Route::post('/public/mail/store', [PublicIncomingMailController::class, 'store'])->name('publicmailstore');
 
+Route::get('public/complaint/ticketing', [PublicTicketingController::class, 'index'])->name('publicticketing');
+Route::get('public/complaint/ticketing/create', [PublicTicketingController::class, 'create'])->middleware('can:isGuest')->name('publicticketingcreate');
+Route::get('public/complaint/ticketing/show/{idEn}', [PublicTicketingController::class, 'show'])->middleware('can:isGuest')->name('publicticketingshow');
+Route::post('/public/complaint/ticketing/store', [PublicTicketingController::class, 'store'])->middleware('can:isGuest')->name('publicticketingstore');
+Route::post('/public/complaint/ticketing/reply/{idEn}', [PublicTicketingController::class, 'reply'])->middleware('can:isGuest')->name('publicticketingreply');
+
 //Admin Routes
 Route::get('/administrator/users', [AdminUserController::class, 'index'])->middleware('can:isAdmin')->name('adminuserindex');
 Route::get('/administrator/users/create', [AdminUserController::class, 'create'])->middleware('can:isAdmin')->name('adminusercreate');
@@ -102,6 +109,10 @@ Route::get('/administrator/news/destroycomment/{id}', [AdminNewsController::clas
 Route::get('/administrator/product', [AdminProductController::class, 'index'])->middleware('can:isAdmin')->name('adminproductindex');
 
 Route::get('/administrator/ticket', [AdminTicketController::class, 'index'])->middleware('can:isAdmin')->name('adminticketindex');
+Route::get('/administrator/ticket/show/{idEn}', [AdminTicketController::class, 'show'])->middleware('can:isAdmin')->name('adminticketshow');
+Route::post('/administrator/ticket/show/reply/{idEn}', [AdminTicketController::class, 'reply'])->middleware('can:isAdmin')->name('publicticketingreply');
+Route::get('/administrator/ticket/finish/{idEn}', [AdminTicketController::class, 'finish'])->middleware('can:isAdmin')->name('publicticketingfinish');
+Route::get('/administrator/ticket/destroy/{idEn}', [AdminTicketController::class, 'destroy'])->middleware('can:isAdmin')->name('publicticketingdestroy');
 
 Route::get('/administrator/mail', [AdminMailController::class, 'index'])->middleware('can:isAdmin')->name('adminmailindex');
 Route::get('/administrator/mail/destroy/{id}', [AdminMailController::class, 'destroy'])->middleware('can:isAdmin')->name('adminmailidestroy');
