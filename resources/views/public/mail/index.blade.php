@@ -38,7 +38,7 @@
             <td class="px-4 py-3 text-ms border font-semibold">{{$loop->iteration}}</td>
             <td class="px-4 py-3 text-ms border">{{$data->institution}}</td>
             <td class="px-4 py-3 text-ms border">{{$data->importance_level}}</td>
-            <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
+            <td class="px-4 py-3 text-sm border">{{$data->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
           </tr>
           @endforeach
         </tbody>

@@ -85,7 +85,7 @@
           <a class="flex items-center mt-6 mb-6 mr-6"><img src="{{ asset('storage/avatar/default.png') }}" alt="avatar" class="hidden object-cover w-14 h-14 mx-4 rounded-full sm:block"></a>
         @endif
         <div><h3 class="text-lg font-bold text-purple-500 sm:text-xl md:text-2xl">{{$comment->user->first_name}} {{$comment->user->last_name}}</h3>
-          <p class="text-sm font-bold text-gray-300">{{$comment->created_at}}</p>
+          <p class="text-sm font-bold text-gray-300">{{$comment->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</p>
           <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
             {{$comment->comment}}
           </p>

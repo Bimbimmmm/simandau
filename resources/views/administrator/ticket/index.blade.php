@@ -34,7 +34,7 @@
               @endif
               / {{$data->importance_level}}
             </td>
-            <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
+            <td class="px-4 py-3 text-sm border">{{$data->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
             @php
             $idEn=Crypt::encrypt($data->id);
             @endphp

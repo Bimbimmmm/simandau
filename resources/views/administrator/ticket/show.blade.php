@@ -104,7 +104,7 @@ $idEn=Crypt::encrypt($data->id);
                         <a class="text text-gray-700 text-sm hover:text-black">{{$message->user->first_name}} {{$message->user->last_name}}</a>
                       </p>
                       <a href="/hagnerd/setting-up-tailwind-with-create-react-app-4jd" class="text-xs text-gray-600 hover:text-black">
-                        <time datetime="2019-08-02T13:58:42.196Z">{{$message->created_at}}</time>
+                        <time datetime="2019-08-02T13:58:42.196Z">{{$message->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</time>
                       </a>
                     </div>
                   </div>

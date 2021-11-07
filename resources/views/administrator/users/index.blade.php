@@ -99,12 +99,6 @@
       @endif
     </td>
   <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-    <a href="#" class="text-green-600 hover:text-green-400 mr-2">
-      <i class="material-icons-outlined text-base">visibility</i>
-    </a>
-    <a href="#" class="text-yellow-600 hover:text-yellow-400  mx-2">
-      <i class="material-icons-outlined text-base">edit</i>
-    </a>
     <a href="#" class="text-red-600 hover:text-red-400    ml-2">
       <i class="material-icons-round text-base">delete_outline</i>
     </a>

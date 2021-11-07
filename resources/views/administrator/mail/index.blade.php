@@ -25,7 +25,7 @@
           @foreach($datas as $data)
           <tr class="text-gray-700 text-center">
             <td class="px-4 py-3 text-ms border font-semibold">{{$loop->iteration}}</td>
-            <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
+            <td class="px-4 py-3 text-sm border">{{$data->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
             @if($data->user_id == null)
             <td class="px-4 py-3 text-ms border">{{$data->full_name}}</td>
             @else

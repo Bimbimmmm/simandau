@@ -34,9 +34,15 @@
           dinas pendidikan dan kebudayaan provinsi kalimantan utara wilayah nunukan yang diselesaikan secara online
           dalam bentuk live chat
         </p>
+        @if(Auth::check())
         <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="/public/complaint/ticketing">
           Kunjungi
         </a>
+        @else
+        <a class="text-white bg-blue-700 hover:bg-yellow-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="/login">
+          Kunjungi
+        </a>
+        @endif
       </div>
     </div>
     <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 p-4">

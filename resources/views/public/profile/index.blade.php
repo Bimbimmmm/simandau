@@ -23,7 +23,7 @@
             </li>
             <li class="flex items-center py-3">
               <span>Member since</span>
-              <span class="ml-auto">{{$user->created_at}}</span>
+              <span class="ml-auto">{{$user->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</span>
             </li>
           </ul>
         </div>
@@ -93,16 +93,11 @@
             <li>
               <div class="text-teal-600">{{$address->address}}</div>
               <div class="text-teal-600">{{$address->village}}, {{$address->district}}, {{$address->city}}</div>
-              <div class="text-teal-600">{{$address->province}}</div>
-              <div class="text-gray-500 text-xs">Ditambahkan pada {{$address->created_at}}</div>
+              <div class="text-teal-600">{{$address->province}}, {{$address->zip_code}}</div>
+              <div class="text-gray-500 text-xs">Ditambahkan pada {{$address->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</div>
             </li>
             @endforeach
           </ul>
-        </div>
-        <button onclick="window.location='{{ url("public/profile/add") }}'"
-        class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-        Tambahkan Alamat</button>
-      </div>
     </div>
   </div>
 </div>

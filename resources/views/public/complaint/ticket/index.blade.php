@@ -50,7 +50,7 @@
             @php
             $idEn=Crypt::encrypt($data->id);
             @endphp
-            <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
+            <td class="px-4 py-3 text-sm border">{{$data->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
             <td class="px-4 py-3 text-xs border">
               <a href="{{ url ('/public/complaint/ticketing/show', array($idEn)) }}" class="text-green-600 hover:text-green-400 mr-2">
                 <i class="material-icons-outlined text-base">visibility</i>

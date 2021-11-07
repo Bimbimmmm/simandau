@@ -40,7 +40,7 @@
           <tr class="text-gray-700 text-center">
             <td class="px-4 py-3 text-ms border font-semibold">{{$title}}...</td>
             <td class="px-4 py-3 text-ms border">{{$data->author}}</td>
-            <td class="px-4 py-3 text-sm border">{{$data->created_at}}</td>
+            <td class="px-4 py-3 text-sm border">{{$data->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
             <td class="px-4 py-3 text-xs border">
               <a href="{{ url ('/administrator/news/show', array("$data->id")) }}" class="text-green-600 hover:text-green-400 mr-2">
                 <i class="material-icons-outlined text-base">visibility</i>

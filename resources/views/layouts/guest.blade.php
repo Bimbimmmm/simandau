@@ -12,12 +12,15 @@
   <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
   <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/materialicons.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/materialdesignicons.min.css') }}">
+
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="{{ asset('js/alpine.min.js') }}"></script>
   <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('js/echart.js') }}"></script>
 </head>
 <body class="font-roboto">
   @include('sweetalert::alert')

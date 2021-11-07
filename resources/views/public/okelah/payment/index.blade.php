@@ -12,7 +12,7 @@
           <div class="text-sm leading-5 font-semibold"><span class="text-xs leading-4 font-normal text-gray-500"> Receipt #</span> Resi Belum Diinput</div>
           @endif
           <div class="text-sm leading-5 font-semibold"><span class="text-xs leading-4 font-normal text-gray-500 pr"> Payment Date</div>
-            <div class="text-sm leading-5 font-semibold">{{$data->created_at}}</div>
+            <div class="text-sm leading-5 font-semibold">{{$data->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</div>
           </div>
           <div class="flex-1">
             <div class="ml-3 space-y-1 border-r-2 pr-3">

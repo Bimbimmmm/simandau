@@ -35,7 +35,7 @@
           </tr>
           <tr class="text-gray-700 text-center">
             <td class="px-4 py-3 text-ms border font-semibold">Tanggal Dibuat</td>
-            <td class="px-4 py-3 text-ms border">{{$news->created_at}}</td>
+            <td class="px-4 py-3 text-ms border">{{$news->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
           </tr>
         </tbody>
       </table>
@@ -62,7 +62,7 @@
           <tr class="text-gray-700 text-center">
             <td class="px-4 py-3 text-ms border font-semibold">{{$comment->user->first_name}} {{$comment->user->last_name}}</td>
             <td class="px-4 py-3 text-ms border">{{$comment->comment}}</td>
-            <td class="px-4 py-3 text-sm border">{{$comment->created_at}}</td>
+            <td class="px-4 py-3 text-sm border">{{$comment->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</td>
             <td class="px-4 py-3 text-xs border">
               <a href="{{ url ('/administrator/news/destroycomment', array("$comment->id")) }}" class="text-red-600 hover:text-red-400    ml-2">
                 <i class="material-icons-round text-base">delete_outline</i>
