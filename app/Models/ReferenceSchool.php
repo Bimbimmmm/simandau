@@ -16,10 +16,12 @@ class ReferenceSchool extends Model
     protected $fillable = [
         'school_name',
         'address',
+        'province',
         'city',
         'district',
         'village',
-        'reference_school_type_id'
+        'reference_school_type_id',
+        'is_deleted'
     ];
 
     public function referenceSchoolType()

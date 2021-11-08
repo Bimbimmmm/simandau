@@ -141,6 +141,8 @@ Route::post('/administrator/transaction/reject/{idEn}', [AdminTransactionControl
 //Reference Routes
 Route::get('/administrator/reference/school', [ReferenceSchoolController::class, 'index'])->middleware('can:isAdmin')->name('adminrefschool');
 Route::get('/administrator/reference/school/create', [ReferenceSchoolController::class, 'create'])->middleware('can:isAdmin');
+Route::post('/administrator/reference/school/store', [ReferenceSchoolController::class, 'store'])->middleware('can:isAdmin')->name('adminrefschoolstore');
+Route::get('/administrator/reference/school/destroy/{id}', [ReferenceSchoolController::class, 'destroy'])->middleware('can:isAdmin')->name('adminrefschooldestroy');
 
 //Operator Routes
 Route::get('/operator/product', [OperatorProductController::class, 'index'])->middleware('can:isOperator')->name('operatorproductindex');

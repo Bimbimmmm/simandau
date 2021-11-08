@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-@extends('layouts.admin')
-@section('content')
 <div class="container mx-auto px-4 sm:px-8">
   <div class="py-8">
     <div>
@@ -38,6 +36,10 @@
           </th>
           <th
           class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          Provinsi
+        </th>
+          <th
+          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
           Kabupaten / Kota
         </th>
       <th
@@ -46,7 +48,7 @@
     </th>
     <th
     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-    Kelurahan
+    Kelurahan / Desa
   </th>
   <th
   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -71,6 +73,11 @@
     </td>
     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
       <p class="text-gray-900 whitespace-no-wrap">
+        {{$data->province}}
+      </p>
+    </td>
+    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <p class="text-gray-900 whitespace-no-wrap">
         {{$data->city}}
       </p>
     </td>
@@ -85,13 +92,7 @@
       </p>
     </td>
   <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-    <a href="#" class="text-green-600 hover:text-green-400 mr-2">
-      <i class="material-icons-outlined text-base">visibility</i>
-    </a>
-    <a href="#" class="text-yellow-600 hover:text-yellow-400  mx-2">
-      <i class="material-icons-outlined text-base">edit</i>
-    </a>
-    <a href="#" class="text-red-600 hover:text-red-400    ml-2">
+    <a href="{{ url ('/administrator/reference/school/destroy', array("$data->id")) }}" class="text-red-600 hover:text-red-400    ml-2">
       <i class="material-icons-round text-base">delete_outline</i>
     </a>
   </td>
@@ -105,6 +106,4 @@
 </div>
 </div>
 </div>
-@endsection
-
 @endsection

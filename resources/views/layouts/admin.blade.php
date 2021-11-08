@@ -19,6 +19,8 @@
   <script src="{{ asset('js/jquery.min.js') }}"></script>
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+  <script src="{{ asset('js/axios.min.js') }}"></script>
+  
 </head>
 <body class="font-roboto">
   @include('sweetalert::alert')

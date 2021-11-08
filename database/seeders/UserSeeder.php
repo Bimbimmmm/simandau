@@ -18,30 +18,16 @@ class UserSeeder extends Seeder
       \DB::table('users')->insert([
           [
               'first_name' => 'Admin',
-              'last_name' => 'Cabdin',
-              'id_number' => '7371121305980005',
-              'email' => 'bimasatriayudha1398@gmail.com',
-              'password' => Hash::make('namamuji'),
+              'last_name' => 'Cabdin Nunukan',
+              'id_number' => '197010102003122006',
+              'email' => 'admincabdin@simandau.kaltaraprov.go.id',
+              'password' => Hash::make('@dm1nSimand4u'),
               'is_admin' => TRUE,
               'is_operator' => FALSE,
               'is_guest' => FALSE,
               'mac_address' => 'XXXXXXXX',
               'ip_address' => 'XXXXXXXX',
               'avatar_file' => 'admin.jpg',
-              'is_deleted' => FALSE
-          ],
-          [
-              'first_name' => 'Dewi',
-              'last_name' => 'Ayu',
-              'id_number' => '1234567890',
-              'email' => 'dwayina@gmail.com',
-              'password' => Hash::make('namamuji'),
-              'is_admin' => FALSE,
-              'is_operator' => FALSE,
-              'is_guest' => TRUE,
-              'mac_address' => 'XXXXXXXX',
-              'ip_address' => 'XXXXXXXX',
-              'avatar_file' => 'dwayina.jpg',
               'is_deleted' => FALSE
           ]
       ]);

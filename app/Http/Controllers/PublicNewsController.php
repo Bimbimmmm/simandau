@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Validator;
-use Session;
+use Alert;
 use App\Models\News;
 use App\Models\NewsComment;
 
