@@ -6,7 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>SIMANDAU</title>
-
+  <link rel="shortcut icon" href="{{ asset('images/kaltara.png') }}" />
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
@@ -95,96 +95,29 @@
           </nav>
           <nav :class="isOpen ? '' : 'hidden'" class="xl:hidden sm:flex sm:justify-center sm:items-center mb-4 ml-4">
             <div class="flex flex-col sm:flex-row">
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Home</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Berita</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">OKELAH</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Statistik</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Tentang Kami</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Layanan Pengaduan</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="#">Layanan Persuratan</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/">Home</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/news">Berita</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/okelah">OKELAH</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/statistic">Statistik</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/aboutus">Tentang Kami</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/complaint">Layanan Pengaduan</a>
+              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/mail">Layanan Persuratan</a>
             </div>
           </nav>
           <div class="font-roboto relative text-gray-700 antialiased">
             @yield('content')
           </div>
           <footer class="text-yellow-900 body-font bg-yellow-200">
-            <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-              <div class="w-64 flex-shrink-0 items-center text-center md:mx-0 mx-auto md:text-center">
-                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                  <img class="w-2/6 text-yellow-900 p-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" src="{{ asset('images/kaltara-footer.png') }}" alt="KALTARA">
-                  <span class="ml-3 text-sm text-yellow-900">Cabang Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara Wilayah Nunukan</span>
-                </a>
-                <p class="mt-2 text-xs text-yellow-900 text-left">Jln. Iskandar Muda Kelurahan Nunukan Barat Kab. Nunukan</p>
-                <p class="mt-2 text-xs text-yellow-900 text-left">Kode POS 77482</p>
-              </div>
-              <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 class="title-font font-bold text-yellow-900 tracking-widest text-md mb-3">CATEGORIES</h2>
-                  <nav class="list-none mb-10">
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">First Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Second Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Third Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Fourth Link</a>
-                    </li>
-                  </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 class="title-font font-bold text-yellow-900 tracking-widest text-md mb-3">CATEGORIES</h2>
-                  <nav class="list-none mb-10">
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">First Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Second Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Third Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Fourth Link</a>
-                    </li>
-                  </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 class="title-font font-bold text-yellow-900 tracking-widest text-md mb-3">CATEGORIES</h2>
-                  <nav class="list-none mb-10">
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">First Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Second Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Third Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Fourth Link</a>
-                    </li>
-                  </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 class="title-font font-bold text-yellow-900 tracking-widest text-md mb-3">CATEGORIES</h2>
-                  <nav class="list-none mb-10">
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">First Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Second Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Third Link</a>
-                    </li>
-                    <li>
-                      <a class="text-yellow-900 hover:text-red-300" href="#">Fourth Link</a>
-                    </li>
-                  </nav>
+            <div class="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+              <div class="xl:px-40 pb-12 lg:px-20 md:px-10 sm:px-5 px-10">
+                <div class="w-full pt-12 flex flex-col sm:flex-row space-y-2 justify-start">
+                  <div class="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
+                    <a class="title-font font-medium items-center md:justify-start justify-center">
+                      <image width="100" height="50" src="{{ asset('images/kaltara.png') }}"/>
+                      <p>Cabang Dinas Pendidikan dan Kebudayaan Wilayah Nunukan</p>
+                    </a>
+                    <p class="mt-0">Jl. Iskandar Muda, Kel. Nunukan Barat, Kec Nunukan, Kab. Nunukan, Prov. Kalimantan Utara, 77482</p>
+                  </div>
                 </div>
               </div>
             </div>

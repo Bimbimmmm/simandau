@@ -6,6 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>SIMANDAU</title>
+  <link rel="shortcut icon" href="{{ asset('images/kaltara.png') }}" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -20,7 +21,7 @@
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
   <script src="{{ asset('js/axios.min.js') }}"></script>
-  
+
 </head>
 <body class="font-roboto">
   @include('sweetalert::alert')

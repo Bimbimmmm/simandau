@@ -7,11 +7,9 @@
     </div>
     <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
       <div class="md:pr-12">
-        <h3 class="text-3xl font-semibold text-white">"A Quotes"</h3>
+        <h3 class="text-2xl font-semibold text-white">"Kuatkan Pendidikan, Lestarikan Budaya!"</h3>
         <p class="mt-4 text-lg leading-relaxed text-white">
-          The extension comes with three pre-built pages to help you get
-          started faster. You can change the text and images and you're
-          good to go.
+          
         </p>
       </div>
     </div>
