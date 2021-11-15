@@ -18,7 +18,7 @@
 </head>
   <body class="font-roboto">
       <section class="min-h-screen flex items-stretch text-white ">
-          <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url('{{asset('images/login-bg.jpg')}}');">
+          <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url('{{asset('images/login.jpg')}}');">
               <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
               <div class="w-full px-24 z-10">
                   <h1 class="text-5xl font-bold text-left tracking-wide">SIMANDAU</h1>
@@ -37,13 +37,20 @@
               </div>
           </div>
           <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0" style="background-color: #161616;">
-              <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url('{{asset('images/login-bg.jpg')}}');">
+              <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url('{{asset('images/login-mobile.jpg')}}');">
                   <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
               </div>
               <div class="w-full py-6 z-20">
-                  <h1 class="ml-28 md:ml-60">
-                      <img src="{{asset('images/kaltara.png')}}" width="150" height="150">
-                  </h1>
+                <div class="text-center">
+                  <h2 class="mt-6 text-3xl font-bold text-white">
+                    SELAMAT DATANG
+                  </h2>
+                  <p class="mt-2 text-sm text-gray-500">Silahkan Login Menggunakan E-mail dan Password Yang Terdaftar</p>
+                </div>
+                <div class="flex flex-row justify-center items-center space-x-3 mt-4">
+                <a class=" items-center justify-center inline-flex font-bold">
+                  <img src="{{ asset('images/kaltara.png') }}" class="w-56 h-56"></a>
+                </div>
                     <form class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto" method="POST" action="{{ route('login') }}">
                         @csrf
                       <div class="pb-2 pt-4">
