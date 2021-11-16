@@ -29,7 +29,7 @@
       <!-- navbar -->
       <nav class="flex sticky top-0 z-50 justify-between bg-white text-yellow-900 w-screen">
         <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-          <a class="text-3xl font-bold font-heading" href="#">
+          <a class="text-3xl font-bold font-heading" href="/">
             <!-- <img class="h-9" src="logo.png" alt="logo"> -->
             SIMANDAU
           </a>
@@ -102,34 +102,46 @@
               <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/aboutus">Tentang Kami</a>
               <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/complaint">Layanan Pengaduan</a>
               <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/mail">Layanan Persuratan</a>
+              @if (!Auth::guest())
+              <a class="mt-6 text-sm font-semibold text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/profile">Profil Saya</a>
+              <a class="mt-3 text-sm font-semibold text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/okelah/payment">Payment History</a>
+              <form class="mt-3" method="POST" action="{{ route('logout') }}">
+                @csrf
+              <a class="mt-6 text-sm text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0">
+                <button class="font-semibold" href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</button>
+              </a>
+              </form>
+                @else
+                <a href="/login" class="mt-6 font-semibold text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0">Log In</a>
+                @endif
+              </div>
+            </nav>
+            <div class="font-roboto relative text-gray-700 antialiased">
+              @yield('content')
             </div>
-          </nav>
-          <div class="font-roboto relative text-gray-700 antialiased">
-            @yield('content')
-          </div>
-          <footer class="text-yellow-900 body-font bg-yellow-200">
-            <div class="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-              <div class="xl:px-40 pb-12 lg:px-20 md:px-10 sm:px-5 px-10">
-                <div class="w-full pt-12 flex flex-col sm:flex-row space-y-2 justify-start">
-                  <div class="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
-                    <a class="title-font font-medium items-center md:justify-start justify-center">
-                      <image width="100" height="50" src="{{ asset('images/kaltara.png') }}"/>
-                      <p>Cabang Dinas Pendidikan dan Kebudayaan Wilayah Nunukan</p>
-                    </a>
-                    <p class="mt-0">Jl. Iskandar Muda, Kel. Nunukan Barat, Kec Nunukan, Kab. Nunukan, Prov. Kalimantan Utara, 77482</p>
+            <footer class="text-yellow-900 body-font bg-yellow-200">
+              <div class="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+                <div class="xl:px-40 pb-12 lg:px-20 md:px-10 sm:px-5 px-10">
+                  <div class="w-full pt-12 flex flex-col sm:flex-row space-y-2 justify-start">
+                    <div class="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
+                      <a class="title-font font-medium items-center md:justify-start justify-center">
+                        <image width="100" height="50" src="{{ asset('images/kaltara.png') }}"/>
+                        <p>Cabang Dinas Pendidikan dan Kebudayaan Wilayah Nunukan</p>
+                      </a>
+                      <p class="mt-0">Jl. Iskandar Muda, Kel. Nunukan Barat, Kec Nunukan, Kab. Nunukan, Prov. Kalimantan Utara, 77482</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="bg-yellow-900">
-              <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                <p class="text-yellow-200 text-sm text-center sm:text-left">© 2021 —
-                  <a rel="noopener noreferrer" class="text-yellow-200 ml-1">Cabdisdikbud Kaltara Wilayah Nunukan</a>
-                </p>
+              <div class="bg-yellow-900">
+                <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                  <p class="text-yellow-200 text-sm text-center sm:text-left">© 2021 —
+                    <a rel="noopener noreferrer" class="text-yellow-200 ml-1">Cabdisdikbud Kaltara Wilayah Nunukan</a>
+                  </p>
+                </div>
               </div>
-            </div>
-          </footer>
-        </section>
-      </div>
-    </body>
-    </html>
+            </footer>
+          </section>
+        </div>
+      </body>
+      </html>
