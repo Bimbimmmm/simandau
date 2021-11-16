@@ -94,11 +94,12 @@ class PublicPaymentController extends Controller
 
         $date_payed = \Carbon\Carbon::now();
         $rules = [
-            'paymentproof'                 => 'required'
+            'paymentproof'                 => 'required|mimes:pdf,png,jpg|max:2048'
         ];
 
         $messages = [
-            'paymentproof.required'        => 'Bukti Pembayaran Wajib Diupload'
+            'paymentproof.required'        => 'Bukti Pembayaran Wajib Diupload',
+            'paymentproof.mimes'           => 'Bukti Pembayaran wajib berekstensi .pdf, .png, atau .jpg'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);

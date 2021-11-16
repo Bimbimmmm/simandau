@@ -55,7 +55,7 @@ class OperatorProductController extends Controller
             'stock'                 => 'required|min:1',
             'weight'                => 'required',
             'file'                  => 'required|array',
-            'file.*'                => 'image|mimes:jpeg,png,jpg|max:2048'
+            'file.*'                => 'image|mimes:png,jpg|max:2048'
         ];
 
         $messages = [
@@ -68,7 +68,8 @@ class OperatorProductController extends Controller
             'price.required'        => 'Harga produk wajib diisi',
             'stock.required'        => 'Stok produk wajib diisi',
             'stock.min'             => 'Stok produk minimal 1',
-            'weight.required'       => 'Berat produk wajib diisi'
+            'weight.required'       => 'Berat produk wajib diisi',
+            'file.mimes'            => 'Foto Produk wajib berekstensi .png atau .jpg',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);

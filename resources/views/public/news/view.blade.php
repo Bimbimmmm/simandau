@@ -27,24 +27,23 @@
     </div>
     <h2 class="text-2xl mt-4 text-gray-500 font-bold text-center">Berita Lainnya</h2>
     <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
-
-      @foreach($newss as $news)
-      @if($news->id != $data->id)
-      @php
-      $idEnNews=Crypt::encrypt($news->id);
-      @endphp
       <div class="grid grid-cols-12 col-span-12 gap-7">
+        @foreach($newss as $news)
+        @if($news->id != $data->id)
+        @php
+        $idEnNews=Crypt::encrypt($news->id);
+        @endphp
         <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4">
           <a class="block transition duration-200 ease-out transform hover:scale-110">
             <img class="object-cover w-full shadow-sm h-full" src="{{ asset('storage/news/' . $news->header_image) }}">
           </a>
           <div class="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
             <h2 class="text-base text-gray-500 font-bold sm:text-lg md:text-xl"><a href="{{ url ('/public/news/view', array("$idEnNews")) }}">{{$news->title}}</a></h2>
-            </div>
+          </div>
         </div>
+        @endif
+        @endforeach
       </div>
-      @endif
-      @endforeach
     </div>
     @php
     $idEn=Crypt::encrypt($data->id);
@@ -82,19 +81,19 @@
         @if($comment->user->avatar_file != null)
         <a class="flex items-center mt-6 mb-6 mr-6"><img src="{{ asset('storage/avatar/' . $comment->user->avatar_file) }}" alt="avatar" class="hidden object-cover w-14 h-14 mx-4 rounded-full sm:block"></a>
         @else
-          <a class="flex items-center mt-6 mb-6 mr-6"><img src="{{ asset('storage/avatar/default.png') }}" alt="avatar" class="hidden object-cover w-14 h-14 mx-4 rounded-full sm:block"></a>
+        <a class="flex items-center mt-6 mb-6 mr-6"><img src="{{ asset('storage/avatar/default.png') }}" alt="avatar" class="hidden object-cover w-14 h-14 mx-4 rounded-full sm:block"></a>
         @endif
         <div><h3 class="text-lg font-bold text-purple-500 sm:text-xl md:text-2xl">{{$comment->user->first_name}} {{$comment->user->last_name}}</h3>
           <p class="text-sm font-bold text-gray-300">{{$comment->created_at->formatLocalized("%H:%M, %d/%m/%Y")}}</p>
           <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
             {{$comment->comment}}
           </p>
-          </div>
         </div>
-        @endforeach
-        </div>
-
       </div>
+      @endforeach
     </div>
+
   </div>
-  @endsection
+</div>
+</div>
+@endsection

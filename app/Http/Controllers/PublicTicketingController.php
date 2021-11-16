@@ -45,15 +45,17 @@ class PublicTicketingController extends Controller
         $rules = [
             'importance_level'      => 'required',
             'title'                 => 'required|min:5',
-            'message'               => 'required'
+            'message'               => 'required',
+            'file.*'                => 'mimes:pdf,png,jpg|max:2048'
         ];
 
         $messages = [
             'importance_level.required'  => 'Prioritas tiket wajib diisi',
             'title.required'             => 'Judul tiket wajib diisi',
             'title.min'                  => 'Judul tiket minimal 5 karakter',
-            'message.required'           => 'Pesan wajib diisi'
-        ];
+            'message.required'           => 'Pesan wajib diisi',
+            'file.mimes'                 => 'Surat wajib berekstensi .pdf, .png, atau .jpg'
+          ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 

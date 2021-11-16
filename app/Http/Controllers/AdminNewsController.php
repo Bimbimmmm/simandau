@@ -43,8 +43,8 @@ class AdminNewsController extends Controller
             'title'                 => 'required|min:3|max:100|unique:news,title',
             'content'               => 'required|min:35',
             'header_image'          => 'required',
-            'header_image.*'        => 'image|mimes:jpeg,png,jpg|max:2048',
-            'content_image.*'       => 'image|mimes:jpeg,png,jpg|max:2048',
+            'header_image.*'        => 'image|mimes:png,jpg|max:2048',
+            'content_image.*'       => 'image|mimes:png,jpg|max:2048',
             'author'                => 'required'
         ];
 
@@ -56,6 +56,8 @@ class AdminNewsController extends Controller
             'content.required'      => 'Isi Berita wajib diisi',
             'content.min'           => 'Isi Berita minimal 35 karakter',
             'header_image.required' => 'Foto Header wajib diisi',
+            'header_image.mimes'    => 'Foto Header wajib berekstensi .png atau .jpg',
+            'content_image.mimes'   => 'Foto Konten wajib berekstensi .png atau .jpg',
             'author.required'       => 'Nama penulis wajib diisi'
         ];
 

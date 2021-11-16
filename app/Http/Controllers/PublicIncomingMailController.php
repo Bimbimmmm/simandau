@@ -52,7 +52,7 @@ class PublicIncomingMailController extends Controller
             'title'                 => 'required',
             'importance_level'      => 'required',
             'contact'               => 'required',
-            'file'                  => 'required'
+            'file'                  => 'required|mimes:pdf|max:2048'
         ];
 
         $messages = [
@@ -61,7 +61,8 @@ class PublicIncomingMailController extends Controller
             'title.required'              => 'Nama surat wajib diisi',
             'importance_level.required'   => 'Prioritas surat wajib diisi',
             'contact.required'            => 'Kontak pengitim wajib diisi',
-            'file.required'               => 'Surat wajib diupload'
+            'file.required'               => 'Surat wajib diupload',
+            'file.mimes'                  => 'Surat wajib berekstensi .pdf'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
