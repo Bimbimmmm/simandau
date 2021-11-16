@@ -8,12 +8,12 @@
         <div class="h-1 w-20 bg-indigo-500 rounded"></div>
       </div>
     </div>
-    @foreach($newss as $news)
-    @php
-    $caption = substr($news->content, 0, 250);
-    $idEn=Crypt::encrypt($news->id);
-    @endphp
     <div class="flex flex-wrap -m-4">
+      @foreach($newss as $news)
+      @php
+      $caption = substr($news->content, 0, 250);
+      $idEn=Crypt::encrypt($news->id);
+      @endphp
       <div class="xl:w-1/3 md:w-1/2 p-4">
         <div class="bg-gray-100 p-6 rounded-lg">
           <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="{{ asset('storage/news/' . $news->header_image) }}" alt="Image Size 720x400">
