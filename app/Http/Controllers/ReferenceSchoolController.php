@@ -21,7 +21,7 @@ class ReferenceSchoolController extends Controller
      */
     public function index()
     {
-        $datas = ReferenceSchool::where('is_deleted' => FALSE)->get();
+        $datas = ReferenceSchool::where('is_deleted', FALSE)->get();
         return view('administrator/references/school/index', compact('datas'));
     }
 
