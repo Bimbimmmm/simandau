@@ -10,6 +10,7 @@ use App\Models\Products;
 use App\Models\ProductImage;
 use App\Models\SchoolOperator;
 use App\Models\ReferenceSchool;
+use App\Models\BankAccount;
 
 class OperatorProductController extends Controller
 {
@@ -23,7 +24,8 @@ class OperatorProductController extends Controller
         $user_id = auth()->user()->id;
         $datas=Products::where(['user_id' => $user_id, 'is_deleted' => FALSE])->get();
         $count=Products::where(['user_id' => $user_id, 'is_deleted' => FALSE])->count();
-        return view('operator/product/index', compact('datas' , 'count'));
+        $check=BankAccount::where(['user_id' => $user_id, 'is_deleted' => FALSE])->count();
+        return view('operator/product/index', compact('datas' , 'count', 'check'));
     }
 
     /**
