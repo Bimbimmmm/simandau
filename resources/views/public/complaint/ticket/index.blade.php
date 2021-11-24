@@ -5,7 +5,7 @@
     <div>
       <h1 class="mb-12 text-center text-4xl text-black font-bold">Layanan Tiket Pengaduan</h1>
     </div>
-    <div class="my-2 flex sm:flex-row flex-col">
+    <div class="my-2 flex sm:flex-row flex-col w-48">
       <div class="block relative">
         <a class="text-white" href="/public/complaint/ticketing/create">
           <div class="flex items-center p-4 bg-green-500 rounded-lg shadow-xs cursor-pointer hover:bg-green-200 hover:text-gray-100">

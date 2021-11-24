@@ -78,7 +78,7 @@ Route::post('public/okelah/addcart/{idEn}', [PublicOkelahController::class, 'add
 Route::get('public/okelah/checkout', [PublicOkelahController::class, 'checkout'])->middleware('can:isGuest')->name('usercheckout');
 Route::post('public/okelah/pay', [PublicOkelahController::class, 'store'])->middleware('can:isGuest')->name('userpay');
 Route::delete('public/okelah/destroy/{id}', [PublicOkelahController::class, 'destroy'])->name('userokelah.destroy');
-
+Route::get('public/okelah/cart', [PublicOkelahController::class, 'cart'])->middleware('can:isGuest')->name('usercart');
 
 Route::get('public/okelah/payment', [PublicPaymentController::class, 'index'])->middleware('can:isGuest')->name('userpaymentindex');
 Route::get('public/okelah/payment/{idEn}', [PublicPaymentController::class, 'show'])->middleware('can:isGuest')->name('userpaymentview');

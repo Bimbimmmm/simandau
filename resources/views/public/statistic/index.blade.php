@@ -13,7 +13,7 @@
       </div>
     </div>
   </header>
-  <section class=" py-1 bg-blueGray-50">
+  <section class="py-1 bg-blueGray-50">
     <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
       <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
         <div class="rounded-t bg-white mb-0 px-6 py-6">
@@ -68,7 +68,7 @@
           <div class="flex flex-wrap">
             <div class="w-full lg:w-12/12 px-4">
               <div class="md:flex md:justify-center md:space-x-8 md:px-14">
-                <div id="course" style="width: 600px;height:600px;"></div>
+                <div id="course" class="w-1/4 h-64 md:w-8/12 md:h-full"></div>
               </div>
             </div>
           </div>
@@ -79,7 +79,7 @@
           <div class="flex flex-wrap">
             <div class="w-full lg:w-12/12 px-4">
               <div class="md:flex md:justify-center md:space-x-8 md:px-14">
-                <div id="present" style="width: 600px;height:600px;"></div>
+                <div id="present" class="w-1/4 h-64 md:w-8/12 md:h-full"></div>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
           <div class="flex flex-wrap">
             <div class="w-full lg:w-12/12 px-4">
               <div class="md:flex md:justify-center md:space-x-8 md:px-14">
-                <div id="grades" style="width: 600px;height:600px;"></div>
+                <div id="grades" class="w-1/4 h-64 md:w-8/12 md:h-full"></div>
               </div>
             </div>
           </div>
@@ -103,7 +103,9 @@ var myChart = echarts.init(document.getElementById('course'));
 
 var option = {
   legend: {
-    data: ['Mata Pelajaran 1', 'Mata Pelajaran 2']
+    data: ['Mata Pelajaran 1', 'Mata Pelajaran 2'],
+    orient: 'vertical',
+    x: 'right',
   },
   radar: {
 
@@ -152,7 +154,7 @@ var option = {
         }
       },
       axisTick: {
-        show: false
+        show: true
       },
       splitLine: {
         length: 15,
@@ -164,12 +166,12 @@ var option = {
       axisLabel: {
         distance: 25,
         color: '#999',
-        fontSize: 20
+        fontSize: 10
       },
       anchor: {
         show: true,
         showAbove: true,
-        size: 25,
+        size: 20,
         itemStyle: {
           borderWidth: 10
         }
@@ -179,7 +181,7 @@ var option = {
       },
       detail: {
         valueAnimation: true,
-        fontSize: 80,
+        fontSize: 50,
         offsetCenter: [0, '70%']
       },
       data: [
@@ -196,60 +198,60 @@ myChart.setOption(option);
 var myChart = echarts.init(document.getElementById('grades'));
 
 var option = {
-    tooltip: {
-      trigger: 'axis'
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['Mata Pelajaran 1', 'Mata Pelajaran 2', 'Mata Pelajaran 3', 'Mata Pelajaran 4', 'Mata Pelajaran 5']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  toolbox: {
+  },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['2020-1', '2020-2', '2021-1', '2021-2', '2022-1', '2022-2']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: 'Mata Pelajaran 1',
+      type: 'line',
+      stack: 'Total',
+      data: [120, 132, 101, 134, 90, 230, 210]
     },
-    legend: {
-      data: ['Mata Pelajaran 1', 'Mata Pelajaran 2', 'Mata Pelajaran 3', 'Mata Pelajaran 4', 'Mata Pelajaran 5']
+    {
+      name: 'Mata Pelajaran 2',
+      type: 'line',
+      stack: 'Total',
+      data: [220, 182, 191, 234, 290, 330, 310]
     },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
+    {
+      name: 'Mata Pelajaran 3',
+      type: 'line',
+      stack: 'Total',
+      data: [150, 232, 201, 154, 190, 330, 410]
     },
-    toolbox: {
+    {
+      name: 'Mata Pelajaran 4',
+      type: 'line',
+      stack: 'Total',
+      data: [320, 332, 301, 334, 390, 330, 320]
     },
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: ['2020-1', '2020-2', '2021-1', '2021-2', '2022-1', '2022-2']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        name: 'Mata Pelajaran 1',
-        type: 'line',
-        stack: 'Total',
-        data: [120, 132, 101, 134, 90, 230, 210]
-      },
-      {
-        name: 'Mata Pelajaran 2',
-        type: 'line',
-        stack: 'Total',
-        data: [220, 182, 191, 234, 290, 330, 310]
-      },
-      {
-        name: 'Mata Pelajaran 3',
-        type: 'line',
-        stack: 'Total',
-        data: [150, 232, 201, 154, 190, 330, 410]
-      },
-      {
-        name: 'Mata Pelajaran 4',
-        type: 'line',
-        stack: 'Total',
-        data: [320, 332, 301, 334, 390, 330, 320]
-      },
-      {
-        name: 'Mata Pelajaran 5',
-        type: 'line',
-        stack: 'Total',
-        data: [820, 932, 901, 934, 1290, 1330, 1320]
-      }
-    ]
+    {
+      name: 'Mata Pelajaran 5',
+      type: 'line',
+      stack: 'Total',
+      data: [820, 932, 901, 934, 1290, 1330, 1320]
+    }
+  ]
 };
 myChart.setOption(option);
 </script>

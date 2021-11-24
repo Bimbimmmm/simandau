@@ -96,28 +96,28 @@ $i=0;
     <h1 class="mb-12 text-center text-4xl text-black font-bold">Produk OKELAH</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
       @foreach($products as $product)
-      <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer p-8">
-        <div class="p-4">
-          @php
-          $idEnOkelah=Crypt::encrypt($product->id);
-          $price = number_format($product->price,2,',','.');
-          @endphp
-          <spna class="bg-red-500 py-2 px-4 text-sm font-semibold text-white rounded-full cursor-pointer">Rp. {{$price}}</spna>
-          <h1 class="mt-4 text-3xl font-bold hover:underline cursor-pointer">{{$product->name}}</h1>
-          <p class="mt-2 font-sans text-gray-700">by {{$product->schoolOperator->school->school_name}}</p>
-        </div>
-        <div class="relative">
-          @if($product_image !=null)
-          <img class="w-80" src="{{ asset('storage/product/' . $product_image[$i]->file) }}" />
-          @endif
-          <a href="{{ url ('/public/okelah/view', array("$idEnOkelah")) }}" class="absolute text-lg transform translate-x-20 -translate-y-24 bg-blue-600 text-white py-3 px-6 rounded-full cursor-pointer hover:scale-105 duration-500">Lihat Produk</a>
-        </div>
-      </div>
       @php
-      $i=$i+1;
+      $idEnOkelah=Crypt::encrypt($product->id);
+      $price = number_format($product->price,2,',','.');
       @endphp
-      @endforeach
+      <a href="{{ url ('/public/okelah/view', array("$idEnOkelah")) }}">
+        <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer p-8">
+          <div class="p-4">
+            <spna class="bg-red-500 py-2 px-4 text-sm font-semibold text-white rounded-full cursor-pointer">Rp. {{$price}}</spna>
+            <h1 class="mt-4 text-3xl font-bold hover:underline cursor-pointer">{{$product->name}}</h1>
+            <p class="mt-2 font-sans text-gray-700">by {{$product->schoolOperator->school->school_name}}</p>
+          </div>
+          <div class="relative">
+            @if($product_image !=null)
+            <img class="w-80" src="{{ asset('storage/product/' . $product_image[$i]->file) }}" />
+            @endif
+          </div>
+        </a>
+        @php
+        $i=$i+1;
+        @endphp
+        @endforeach
       </div>
-  </div>
-</header>
-@endsection
+    </div>
+  </header>
+  @endsection

@@ -52,6 +52,19 @@ class PublicOkelahController extends Controller
     return view('public/okelah/index', compact('datas', 'product_preview', 'carts', 'cart_preview'));
   }
 
+  public function cart(){
+    $cart_preview = [];
+    $x=0;
+    $user_id = auth()->user()->id;
+    $carts=Cart::where(['user_id' => $user_id, 'is_checkouted' => FALSE])->get();
+    foreach ($carts as $cart) {
+      $cart_preview_data=ProductImage::where('product_id', $cart->product_id)->first();
+      $cart_preview[$x] = $cart_preview_data;
+      $x=$x+1;
+    }
+    return view('public/okelah/cart', compact('carts', 'cart_preview'));
+  }
+
   public function category($id){
 
     $product_preview = [];

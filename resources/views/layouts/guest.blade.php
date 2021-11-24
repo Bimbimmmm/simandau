@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/materialicons.css') }}">
   <link rel="stylesheet" href="{{ asset('css/materialdesignicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
 
 
   <!-- Scripts -->
@@ -21,127 +24,82 @@
   <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   <script src="{{ asset('js/echart.js') }}"></script>
+  <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>
+  <script src="{{ asset('js/jquery-ui.js') }}"></script>
 </head>
 <body class="font-roboto">
   @include('sweetalert::alert')
-  <div class="flex flex-wrap h-screen" x-data="{open: false , isOpen: false }">
-    <section class="relative mx-auto">
-      <!-- navbar -->
-      <nav class="flex sticky top-0 z-50 justify-between bg-white text-yellow-900 w-screen">
-        <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-          <a class="text-3xl font-bold font-heading" href="/">
-            <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-            SIMANDAU
-          </a>
-          <!-- Nav Links -->
-          <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-            <li><a class="hover:text-yellow-600" href="/">Home</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/news">Berita</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/okelah">OKELAH</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/statistic">Statistik</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/aboutus">Tentang Kami</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/complaint">Layanan Pengaduan</a></li>
-            <li><a class="hover:text-yellow-600" href="/public/mail">Layanan Persuratan</a></li>
-          </ul>
-          <!-- Header Icons -->
-          <div class="hidden xl:flex items-center space-x-5 items-center">
-            <!-- Sign In / Register      -->
-            <button @click="open = !open" class="flex items-center hover:text-yellow-600" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div x-show="open" class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20 mt-20 mr-8" style="width:20rem;">
-          @if (!Auth::guest())
-          <div class="py-2">
-            <a href="/public/profile" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
-              @if(auth()->user()->avatar_file != null)
-              <img class="h-8 w-8 rounded-full object-cover mx-1" src="{{ asset('storage/avatar/' . auth()->user()->avatar_file) }}" alt="avatar">
-              @else
-              <img class="h-8 w-8 rounded-full object-cover mx-1" src="{{ asset('storage/avatar/default.png') }}" alt="avatar">
-              @endif
-              <p class="text-gray-600 text-sm mx-2">
-                <span class="font-bold" href="#">{{auth()->user()->first_name}} {{auth()->user()->last_name}}
-                </p>
+  <nav class="sticky top-0 z-50 bg-white">
+    <div x-data="{ opened: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+      <div class="p-4 flex flex-row items-center justify-between">
+        <a href="/" class="text-3xl font-bold tracking-widest text-yellow-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">SIMANDAU</a>
+        <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="opened = !opened">
+          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+            <path x-show="!opened" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            <path x-show="opened" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <nav :class="{'flex': opened, 'hidden': !opened}" class="flex-col mt-4 flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/">Home</a>
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/public/news">Berita</a>
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/public/okelah">OKELAH</a>
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/public/statistic">Statistik</a>
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/public/aboutus">Tentang Kami</a>
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/public/complaint">Layanan Pengaduan</a>
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/public/mail">Layanan Persuratan</a>
+        @if(!Auth::check())
+        <a class="px-4 py-2 mt-2 text-yellow-900 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-yellow-900 dark-mode:hover:yellow-900 dark-mode:text-yellow-900 md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-yellow-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/login">Login</a>
+        @else
+        <div @click.away="opened = false" class="relative mr-4" x-data="{ opened: false }">
+          <button @click="opened = !opened" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-yellow-900 text-base font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-yellow-900 dark-mode:hover:text-yellow-900 dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-yellow-600 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+            <span>{{auth()->user()->first_name}} {{auth()->user()->last_name}}</span>
+            <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': opened, 'rotate-0': !opened}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <div x-show="opened" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+            <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+              <a href="/public/profile" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                Profile
               </a>
-              <a href="/public/okelah/payment" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
-                <p class="text-gray-600 text-sm mx-2">
-                  <span class="font-bold" href="#">Payment History
-                  </p>
-                </a>
-              </div>
-              @endif
-              @if (!Auth::guest())
+              <a href="/public/okelah/payment" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                Riwayat Pembayaran
+              </a>
+              <a href="/public/okelah/cart" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                Keranjang Belanja
+              </a>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <a class="block bg-gray-800 text-white text-center font-bold py-2">
-                  <button href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</button>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                  <button href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                    Logout
+                  </button>
                 </a>
-              </form>
-              @else
-              <a href="/login" class="block bg-gray-800 text-white text-center font-bold py-2">Log In</a>
-              @endif
-            </div>
-            <!-- Responsive navbar -->
-            <div class="navbar-burger self-center mr-6 xl:hidden">
-              <button @click="isOpen = !isOpen" type="button" class="text-yellow-900 hover:text-yellow-600 focus:outline-none focus:text-yellow-900" aria-label="toggle menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-yellow-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </nav>
-          <nav :class="isOpen ? '' : 'hidden'" class="xl:hidden sm:flex sm:justify-center sm:items-center mb-4 ml-4">
-            <div class="flex flex-col sm:flex-row">
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/">Home</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/news">Berita</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/okelah">OKELAH</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/statistic">Statistik</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/aboutus">Tentang Kami</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/complaint">Layanan Pengaduan</a>
-              <a class="mt-3 text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/mail">Layanan Persuratan</a>
-              @if (!Auth::guest())
-              <a class="mt-6 text-sm font-semibold text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/profile">Profil Saya</a>
-              <a class="mt-3 text-sm font-semibold text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0" href="/public/okelah/payment">Payment History</a>
-              <form class="mt-3" method="POST" action="{{ route('logout') }}">
-                @csrf
-              <a class="mt-6 text-sm text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0">
-                <button class="font-semibold" href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</button>
-              </a>
-              </form>
-                @else
-                <a href="/login" class="mt-6 font-semibold text-yellow-900 hover:text-yellow-600 sm:mx-3 sm:mt-0">Log In</a>
-                @endif
               </div>
-            </nav>
-            <div class="font-roboto relative text-gray-700 antialiased">
-              @yield('content')
-            </div>
-            <footer class="text-yellow-900 body-font bg-yellow-200">
-              <div class="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-                <div class="xl:px-40 pb-12 lg:px-20 md:px-10 sm:px-5 px-10">
-                  <div class="w-full pt-12 flex flex-col sm:flex-row space-y-2 justify-start">
-                    <div class="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
-                      <a class="title-font font-medium items-center md:justify-start justify-center">
-                        <image width="100" height="50" src="{{ asset('images/kaltara.png') }}"/>
-                        <p>Cabang Dinas Pendidikan dan Kebudayaan Wilayah Nunukan</p>
-                      </a>
-                      <p class="mt-0">Jl. Iskandar Muda, Kel. Nunukan Barat, Kec Nunukan, Kab. Nunukan, Prov. Kalimantan Utara, 77482</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-yellow-900">
-                <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                  <p class="text-yellow-200 text-sm text-center sm:text-left">© 2021 —
-                    <a rel="noopener noreferrer" class="text-yellow-200 ml-1">Cabdisdikbud Kaltara Wilayah Nunukan</a>
-                  </p>
-                </div>
-              </div>
-            </footer>
-          </section>
+            </form>
+          </div>
         </div>
-      </body>
-      </html>
+        @endif
+      </nav>
+    </div>
+  </nav>
+  <div class="container min-h-full min-w-full">
+    @yield('content')
+  </div>
+  <footer class="w-full bg-yellow-200 text-yellow-900">
+    <div class="xl:px-40 pb-12 lg:px-20 md:px-10 sm:px-5 px-10">
+      <div class="w-full pt-12 flex flex-col sm:flex-row space-y-2 justify-start">
+        <div class="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
+          <a class="title-font font-medium items-center md:justify-start justify-center">
+            <image width="100" height="50" src="{{ asset('images/kaltara.png') }}"/>
+            <p>Cabang Dinas Pendidikan dan Kebudayaan Wilayah Nunukan</p>
+          </a>
+          <p class="mt-0">Jl.Iskandar Muda, Kel.Nunukan Barat, Kec.Nunukan, Kab.Nunukan, Provinsi Kalimantan Utara, 77482</p>
+        </div>
+      </div>
+      <div class="opacity-60 pt-2">
+        <p>© 2021 Cabdin NNK</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

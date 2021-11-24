@@ -8,10 +8,8 @@
         <!-- Profile Card -->
         <div class="bg-white p-3 border-t-4 border-green-400">
           <div class="image overflow-hidden">
-            <img class="h-auto w-full mx-auto"
-            src="{{ asset('storage/avatar/' .$user->avatar_file) }}"
-
-            alt="">
+            <img class="h-64 w-64 mx-auto"
+            src="{{ asset('storage/avatar/' .$user->avatar_file) }}">
           </div>
           <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{$user->first_name}} {{$user->last_name}}</h1>
           <ul
@@ -27,13 +25,9 @@
             </li>
           </ul>
         </div>
-        <!-- End of profile card -->
         <div class="my-4"></div>
       </div>
-      <!-- Right Side -->
-      <div class="w-full md:w-9/12 mx-2 h-64">
-        <!-- Profile tab -->
-        <!-- About Section -->
+      <div class="w-full md:w-9/12 mx-2">
         <div class="bg-white p-3 shadow-sm rounded-sm">
           <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
             <span clas="text-green-500">
@@ -98,6 +92,8 @@
             </li>
             @endforeach
           </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
