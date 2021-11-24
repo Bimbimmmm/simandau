@@ -26,8 +26,8 @@
       </div>
     </div>
     <h2 class="text-2xl mt-4 text-gray-500 font-bold text-center">Berita Lainnya</h2>
-    <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
-      <div class="grid grid-cols-12 col-span-12 gap-7">
+    <div class="flex grid h-full grid-cols-12 pb-10 mt-8 sm:mt-16">
+      <div class="grid grid-cols-12 col-span-12">
         @foreach($newss as $news)
         @if($news->id != $data->id)
         @php
@@ -37,7 +37,7 @@
           <a class="block transition duration-200 ease-out transform hover:scale-110">
             <img class="object-cover w-full shadow-sm h-full" src="{{ asset('storage/news/' . $news->header_image) }}">
           </a>
-          <div class="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
+          <div class="w-full flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
             <h2 class="text-base text-gray-500 font-bold sm:text-lg md:text-xl"><a href="{{ url ('/public/news/view', array("$idEnNews")) }}">{{$news->title}}</a></h2>
           </div>
         </div>

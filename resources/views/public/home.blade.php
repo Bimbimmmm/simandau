@@ -12,7 +12,7 @@ $i=0;
 <header>
   <div class="min-h-screen bg-yellow-900 py-14">
     <h1 class="mb-12 text-center text-4xl text-white font-bold">Produk Layanan</h1>
-    <div class="md:flex md:justify-center md:space-x-8 md:px-14">
+    <div class="justify-center md:flex md:justify-center md:space-x-8 md:px-14">
       <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 p-4">
         <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <img class="rounded-t-lg" src="{{ asset('images/simacan.jpg') }}" alt="SIMACAN">

@@ -40,7 +40,7 @@ class AdminNewsController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'title'                 => 'required|min:3|max:100|unique:news,title',
+            'title'                 => 'required|min:3|max:200|unique:news,title',
             'content'               => 'required|min:35',
             'header_image'          => 'required',
             'header_image.*'        => 'image|mimes:png,jpg|max:2048',
@@ -51,7 +51,7 @@ class AdminNewsController extends Controller
         $messages = [
             'title.required'        => 'Judul Berita wajib diisi',
             'title.min'             => 'Judul Berita minimal 3 karakter',
-            'title.max'             => 'Judul Berita maksimal 100 karakter',
+            'title.max'             => 'Judul Berita maksimal 200 karakter',
             'title.unique'          => 'Judul Berita sudah pernah dibuat',
             'content.required'      => 'Isi Berita wajib diisi',
             'content.min'           => 'Isi Berita minimal 35 karakter',
