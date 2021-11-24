@@ -31,7 +31,7 @@
         @php
         $idEnNews=Crypt::encrypt($news->id);
         @endphp
-        <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4 mb-4">
+        <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4 mb-4 mr-4">
           <a class="block transition duration-200 ease-out transform hover:scale-110">
             <img class="object-cover w-full shadow-sm h-full" src="{{ asset('storage/news/' . $news->header_image) }}">
           </a>
