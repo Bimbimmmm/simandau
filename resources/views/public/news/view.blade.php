@@ -4,7 +4,7 @@
   <div class=" px-10 py-6 mx-auto">
     <div class="max-w-6xl px-10 py-6 mx-auto bg-gray-50">
       <a class="block">
-        <img class="object-cover w-1/2 shadow-sm h-1/2" src="{{ asset('storage/news/' . $data->header_image) }}">
+        <img class="object-cover w-full h-full xl:w-1/2 shadow-sm xl:h-1/2" src="{{ asset('storage/news/' . $data->header_image) }}">
       </a>
       <div class="mt-2">
         <a class="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-blue-700">{{$data->title}}</a>
@@ -16,12 +16,10 @@
           </a>
         </div>
       </div>
-      <div class="max-w-4xl px-10  mx-auto text-xl text-gray-700 rounded bg-gray-100">
-        <div>
-          <p class="p-5">{!! $data->content !!}</p>
-        </div>
+      <div class="max-w-4xl  mx-auto text-xl text-gray-700 rounded bg-gray-100">
+          {!! $data->content !!}
         <a class="block">
-          <img class="object-cover w-1/2 shadow-sm h-1/2" src="{{ asset('storage/news/' . $data->content_image) }}">
+          <img class="object-cover w-3/5 shadow-sm h-9/12" src="{{ asset('storage/news/' . $data->content_image) }}">
         </a>
       </div>
     </div>
@@ -33,7 +31,7 @@
         @php
         $idEnNews=Crypt::encrypt($news->id);
         @endphp
-        <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4">
+        <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4 mb-4">
           <a class="block transition duration-200 ease-out transform hover:scale-110">
             <img class="object-cover w-full shadow-sm h-full" src="{{ asset('storage/news/' . $news->header_image) }}">
           </a>
