@@ -16,8 +16,10 @@
           </a>
         </div>
       </div>
-      <div class="max-w-4xl  mx-auto text-xl text-gray-700 rounded bg-gray-100">
+      <div class="max-w-4xl mx-auto text-xl text-gray-700 rounded bg-gray-100">
+        <p class="text-justify">
           {!! $data->content !!}
+        </p>
         <a class="block">
           <img class="object-cover w-3/5 shadow-sm h-9/12" src="{{ asset('storage/news/' . $data->content_image) }}">
         </a>
@@ -28,15 +30,12 @@
       <div class="grid grid-cols-12 col-span-12">
         @foreach($newss as $news)
         @if($news->id != $data->id)
-        @php
-        $idEnNews=Crypt::encrypt($news->id);
-        @endphp
         <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4 mb-4 mr-4">
           <a class="block transition duration-200 ease-out transform hover:scale-110">
             <img class="object-cover w-full shadow-sm h-full" src="{{ asset('storage/news/' . $news->header_image) }}">
           </a>
           <div class="w-full flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
-            <h2 class="text-base text-gray-500 font-bold sm:text-lg md:text-xl"><a href="{{ url ('/public/news/view', array("$idEnNews")) }}">{{$news->title}}</a></h2>
+            <h2 class="text-base text-gray-500 font-bold sm:text-lg md:text-xl"><a href="{{ url ('/public/news/view', array("$news->title")) }}">{{$news->title}}</a></h2>
           </div>
         </div>
         @endif
