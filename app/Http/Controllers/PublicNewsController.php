@@ -79,14 +79,20 @@ class PublicNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idEn)
+    public function show($title)
     {
-        $id=Crypt::decrypt($idEn);
-        $data=News::where('id', $id)->first();
-        $newss=News::where('is_deleted', FALSE)->latest()->take(4)->get();
-        $comments=NewsComment::where('news_id', $id)->get();
-        return view('public/news/view', compact('data', 'comments', 'newss'));
-    }
+        $news=News::where(['title' => $title, 'is_deleted' => FALSE])->first();
+        $check=News::where(['title' => $title, 'is_deleted' => FALSE])->count();
+        if($check > 0){
+          $data=News::where('id', $news->id)->first();
+          $newss=News::where('is_deleted', FALSE)->latest()->take(4)->get();
+          $comments=NewsComment::where('news_id', $news->id)->get();
+          return view('public/news/view', compact('data', 'comments', 'newss'));
+        }else{
+          Alert::error('Tidak Ditemukan', 'Berita Yang Anda Cari Tidak Ditemukan');
+          return redirect()->back();
+        }
+      }
 
     /**
      * Show the form for editing the specified resource.

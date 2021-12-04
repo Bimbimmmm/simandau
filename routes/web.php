@@ -67,7 +67,7 @@ Route::get('getVillage/{id}', function ($id) {
 //Public Routes
 Route::resource('publicnews', 'PublicNewsController');
 Route::get('public/news', [PublicNewsController::class, 'index'])->name('publicnewsindex');
-Route::get('public/news/view/{idEn}', [PublicNewsController::class, 'show'])->name('publicnewsshow');
+Route::get('public/news/view/{title}', [PublicNewsController::class, 'show'])->name('publicnewsshow');
 Route::post('/public/news/store', [PublicNewsController::class, 'store'])->middleware('can:isGuest')->name('usernewscomment');
 
 Route::resource('publicokelah', 'PublicOkelahController');
