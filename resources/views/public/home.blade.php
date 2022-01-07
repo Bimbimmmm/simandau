@@ -42,7 +42,7 @@ $i=0;
             dalam menunjang proses belajar mengajar di sekolah. serta menjadi alat monitoring dan evaluasi terhadap
             peserta didik oleh orang tua dan performa tenaga pendidik oleh atasan
           </p>
-          <a class="text-white bg-blue-700 hover:bg-yellow-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
+          <a class="text-white bg-blue-700 hover:bg-yellow-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="https://sielang.kaltaraprov.go.id/" target="_blank">
             Kunjungi
           </a>
         </div>

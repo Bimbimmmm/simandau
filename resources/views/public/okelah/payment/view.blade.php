@@ -6,7 +6,7 @@ $i=0;
 <div class="flex justify-center my-6">
   <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
     <header>
-      <div class="container mx-auto px-6 py-3">
+      <div class="container mx-auto px-6">
         <div class="flex items-center justify-between">
           <div class="hidden w-full text-gray-600 md:flex md:items-center">
             <a href="/public/okelah/payment">
@@ -29,8 +29,8 @@ $i=0;
           <tr class="h-12 uppercase">
             <th class="hidden md:table-cell"></th>
             <th class="text-left">Nama Bank</th>
-            <th class="hidden text-right md:table-cell">Nomor Rekening</th>
-            <th class="hidden text-right md:table-cell">Pemiilik Rekening</th>
+            <th class="text-right md:table-cell">Nomor Rekening</th>
+            <th class="text-right md:table-cell">Pemiilik Rekening</th>
           </tr>
         </thead>
         <tbody>
@@ -47,12 +47,12 @@ $i=0;
                 <p class="mb-2 md:ml-4">{{$bank_account[$a][$a]->bank_name}}</p>
               </a>
             </td>
-            <td class="hidden text-right md:table-cell">
+            <td class="text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
                 {{$bank_account[$a][$a]->account_number}}
               </span>
             </td>
-            <td class="hidden text-right md:table-cell">
+            <td class="text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
                 {{$bank_account[$a][$a]->owner_name}}
               </span>
