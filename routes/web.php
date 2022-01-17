@@ -95,6 +95,7 @@ Route::get('public/complaint', [PublicComplaintController::class, 'index'])->nam
 
 Route::resource('publicstatistic', 'PublicStatisticController');
 Route::get('public/statistic', [PublicStatisticController::class, 'index'])->name('publicstatisticindex');
+Route::post('public/statistic/search', [PublicStatisticController::class, 'search'])->name('publicstatisticsearch');
 
 Route::get('public/mail', [PublicIncomingMailController::class, 'index'])->name('publicmail');
 Route::get('public/mail/add', [PublicIncomingMailController::class, 'create'])->name('publicmailadd');

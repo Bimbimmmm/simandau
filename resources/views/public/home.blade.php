@@ -99,24 +99,20 @@ $i=0;
       $idEnOkelah=Crypt::encrypt($product->id);
       $price = number_format($product->price,2,',','.');
       @endphp
-      <a href="{{ url ('/public/okelah/view', array("$idEnOkelah")) }}">
-        <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer p-8">
-          <div class="p-4">
-            <spna class="bg-red-500 py-2 px-4 text-sm font-semibold text-white rounded-full cursor-pointer">Rp. {{$price}}</spna>
-            <h1 class="mt-4 text-3xl font-bold hover:underline cursor-pointer">{{$product->name}}</h1>
-            <p class="mt-2 font-sans text-gray-700">by {{$product->schoolOperator->school->school_name}}</p>
-          </div>
-          <div class="relative">
-            @if($product_image !=null)
-            <img class="w-80" src="{{ asset('storage/product/' . $product_image[$i]->file) }}" />
-            @endif
-          </div>
-        </a>
-        @php
-        $i=$i+1;
-        @endphp
-        @endforeach
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="bg-white p-6 rounded-lg">
+          @if($product_image !=null)
+          <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="{{ asset('storage/product/' . $product_image[$i]->file) }}">
+          @endif
+          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">Rp. {{$price}}</h3>
+          <a  href="{{ url ('/public/okelah/view', array("$idEnOkelah")) }}"><h2 class="text-lg text-gray-900 font-medium title-font mb-4 hover:underline">{{$product->name}}</h2></a>
+          <p class="leading-relaxed text-base">by {{$product->schoolOperator->school->school_name}}</p>
+        </div>
       </div>
+      @php
+      $i=$i+1;
+      @endphp
+      @endforeach
     </div>
   </header>
   @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
 
 class PublicStatisticController extends Controller
 {
@@ -21,9 +22,11 @@ class PublicStatisticController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        //STILL WAIT FOR API FROM SIELANG
+        Alert::error('Gagal', 'Data Siswa Tidak Ditemukan / Belum Terdaftar Pada Aplikasi SIELANG! Silahkan Mengecek Ulang NISN Yang Dimasukkan');
+        return redirect()->back();
     }
 
     /**
