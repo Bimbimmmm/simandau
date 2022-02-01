@@ -19,7 +19,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Nama Pengirim
+            Nama Pengirim <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <input name="full_name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="full_name" type="text" required>
         </div>
@@ -28,7 +28,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Instansi Pengirim
+            Instansi Pengirim <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <input name="institution" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="institution" type="text" required>
         </div>
@@ -36,7 +36,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Jabatan Pengirim Surat
+            Jabatan Pengirim Surat <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <input name="position" id="position" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" required>
         </div>
@@ -44,7 +44,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Judul Surat
+            Judul Surat <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <input name="title" id="title" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" required>
         </div>
@@ -52,7 +52,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Prioritas Surat
+            Prioritas Surat <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <select name="importance_level" id="importance_level" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             <option value="">== Pilih Prioritas Surat ==</option>
@@ -65,7 +65,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Kontak Pengirim (Nomor HP / e-Mail)
+            Kontak Pengirim (Nomor HP / e-Mail) <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <input name="contact" id="contact" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" required>
         </div>
@@ -73,7 +73,7 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-            Surat
+            Surat <span class="text-xs text-red-500"><i>*required</i></span>
           </label>
           <label class="w-64 flex flex-col w-full items-center px-4 py-6 bg-yellow-400 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-yellow-500 hover:text-white">
             <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
